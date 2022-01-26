@@ -1,5 +1,6 @@
 import {
   Links,
+  LinksFunction,
   LiveReload,
   Meta,
   Outlet,
@@ -8,6 +9,11 @@ import {
 } from 'remix';
 import type { MetaFunction } from 'remix';
 
+import styles from 'antd/dist/antd.css';
+
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: styles }];
+};
 export const meta: MetaFunction = () => {
   return { title: 'Remix Film' };
 };
