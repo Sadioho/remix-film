@@ -1,15 +1,15 @@
 import { useLoaderData } from 'remix';
 export const loader = async () => {
   console.log('AHIHIHI');
-  return null
+  return null;
 };
-export default function Demo() {
+export default function Detail() {
   const data = useLoaderData();
   console.log('data', data);
 
   return (
     <div>
-      <h1>Defasdfsadfmo</h1>
+      <h1>Detail</h1>
     </div>
   );
 }
