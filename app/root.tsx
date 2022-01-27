@@ -9,13 +9,13 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import MainLayout from "./components/templates/MainLayout";
-import styles from "antd/dist/antd.css";
 import stylesRoot from "./root.css";
+import styles from "antd/dist/antd.css";
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: styles },
     { rel: "stylesheet", href: stylesRoot },
+    { rel: "stylesheet", href: styles },
   ];
 };
 export const meta: MetaFunction = () => {
