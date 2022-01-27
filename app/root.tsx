@@ -6,16 +6,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from 'remix';
-import type { MetaFunction } from 'remix';
-
-import styles from 'antd/dist/antd.css';
+} from "remix";
+import type { MetaFunction } from "remix";
+import MainLayout from "./components/templates/MainLayout";
+import styles from "antd/dist/antd.css";
+import stylesRoot from "./root.css";
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: stylesRoot },
+  ];
 };
 export const meta: MetaFunction = () => {
-  return { title: 'Remix Film' };
+  return { title: "Remix Film" };
 };
 
 export default function App() {
@@ -28,10 +32,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <MainLayout />
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
+        {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>
   );
