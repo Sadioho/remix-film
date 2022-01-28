@@ -8,38 +8,44 @@ export default function Banner(props: any) {
   const refSpin = useRef<HTMLDivElement>(null);
   const refGround = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    let radius = 480; // how big of the radius
-    const autoRotate = true; // auto rotate or not
+    let radius = 480; // vòng tròn ảnh
+    const autoRotate = true; // xoay
     const rotateSpeed = -60; // unit: seconds/360 degrees
-    let imgWidth = 300; // width of images (unit: px)
-    let imgHeight = 170; // height of images (unit: px)
+    let imgWidth = 400; // width
+    let imgHeight = 250; // height
+    let desX = 0,
+      desY = 0,
+      tX = 0,
+      tY = 10;
+    const odrag = refDrag.current;
+    const circleSpin = refSpin.current;
+    const images: any = circleSpin?.getElementsByClassName("item-carousel");
+    const elements = [...images]; // arrays
+    const ground = refGround.current;
+
     const init = (delayTime: any) => {
-      for (let i = 0; i < aEle.length; i++) {
-        aEle[i].style.transform =
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].style.transform =
           "rotateY(" +
-          i * (360 / aEle.length) +
+          i * (360 / elements.length) +
           "deg) translateZ(" +
           radius +
           "px)";
-        aEle[i].style.transition = "transform 1s";
-        aEle[i].style.transitionDelay =
-          delayTime || (aEle.length - i) / 4 + "s";
+        elements[i].style.transition = "transform 1s";
+        elements[i].style.transitionDelay =
+          delayTime || (elements.length - i) / 4 + "s";
       }
     };
+    if (odrag) odrag.style.transform = "rotateX(0deg) rotateY(0deg)";
+
     setTimeout(init, 1000);
 
-    const odrag = refDrag.current;
-    const ospin = refSpin.current;
-    const aImg: any = ospin?.getElementsByClassName("item-carousel");
-    const aEle = [...aImg]; // arrays
     // Size of images
-    if (ospin) {
-      ospin.style.width = imgWidth + "px";
-      ospin.style.height = imgHeight + "px";
+    if (circleSpin) {
+      circleSpin.style.width = imgWidth + "px";
+      circleSpin.style.height = imgHeight + "px";
     }
     // Size of ground - depend on radius
-    const ground = refGround.current;
-
     if (ground) {
       ground.style.width = radius * 3 + "px";
       ground.style.height = radius * 3 + "px";
@@ -55,19 +61,15 @@ export default function Banner(props: any) {
     };
 
     const playSpin = (yes: any) => {
-      if (ospin) ospin.style.animationPlayState = yes ? "running" : "paused";
+      if (circleSpin)
+        circleSpin.style.animationPlayState = yes ? "running" : "paused";
     };
-
-    let desX = 0,
-      desY = 0,
-      tX = 0,
-      tY = 10;
 
     // auto spin
     if (autoRotate) {
       const animationName = rotateSpeed > 0 ? "spin" : "spinRevert";
-      if (ospin)
-        ospin.style.animation = `${animationName} ${Math.abs(
+      if (circleSpin)
+        circleSpin.style.animation = `${animationName} ${Math.abs(
           rotateSpeed
         )}s infinite linear`;
     }
@@ -79,7 +81,7 @@ export default function Banner(props: any) {
       let sX = e.clientX,
         sY = e.clientY;
 
-      document.onpointermove = function (e) {
+      document.onpointermove = (e) => {
         e = e || window.event;
         const nX = e.clientX,
           nY = e.clientY;
@@ -114,13 +116,26 @@ export default function Banner(props: any) {
     document.onwheel = (e) => {
       e = e || window.event;
       const d = e.deltaY / 20 || -e.detail;
-      radius += d;
-      imgWidth += d;
-      if (ospin) {
-        imgWidth < 120
-          ? (ospin.style.width = "120 px")
-          : (ospin.style.width = imgWidth + "px");
+      radius < 250
+        ? (radius = 250)
+        : radius > 550
+        ? (radius = 550)
+        : (radius += d);
+
+      // imgWidth < 250
+      //   ? (imgWidth = 250)
+      //   : imgWidth > 450
+      //   ? (imgWidth = 450)
+      //   : (imgWidth += d / 2);
+
+      imgWidth += d / 2;
+
+      if (circleSpin) {
+        if (imgWidth < 250) imgWidth = 250;
+        if (imgWidth > 450) imgWidth = 450;
+        circleSpin.style.width = imgWidth + "px";
       }
+
       init(1);
     };
   }, []);
@@ -132,7 +147,7 @@ export default function Banner(props: any) {
           {films.map((item: Film) => (
             <div key={item.id} className="box_3D_container__item item-carousel">
               <img src={item.imageUrl} alt={item.title || "image carousel"} />
-              <p className="name-movie">{item.title}</p>
+              <p className="name-movie py-1">{item.title}</p>
             </div>
           ))}
           <p className="author">HAM6 BLUE CAROUSELLLLLL</p>

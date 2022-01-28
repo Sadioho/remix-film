@@ -44,10 +44,11 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
 }
 // main layout
 .main-layout {
-  margin-top: 5rem;
+  margin-top: $height-menu;
   .pagination {
     display: flex;
     justify-content: center;

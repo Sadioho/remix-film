@@ -1621,10 +1621,11 @@ html {
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 10; }
 
 .main-layout {
-  margin-top: 5rem; }
+  margin-top: 4.8rem; }
   .main-layout .pagination {
     display: flex;
     justify-content: center;
@@ -1645,37 +1646,38 @@ html {
           background-color: #b7b7b7; }
 
 .box_3D {
-  height: 60rem;
+  display: flex;
+  height: calc(100vh - 4.8rem);
+  perspective: 1000px;
+  transform-style: preserve-3d;
   touch-action: none;
   overflow: hidden;
-  display: flex;
   background: #111;
-  perspective: 1000px;
-  transform-style: preserve-3d; }
+  z-index: 5; }
   .box_3D_container__item {
-    transform-style: preserve-3d;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    line-height: 200px;
-    font-size: 50px;
     text-align: center;
+    transform-style: preserve-3d;
     box-shadow: 0 0 8px #fff;
     -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005); }
     .box_3D_container__item img {
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      transition: all 0.3s ease-in-out; }
       .box_3D_container__item img:hover {
         box-shadow: 0 0 15px #fffd;
         -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007); }
     .box_3D_container__item .name-movie {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff; }
+      bottom: 0;
+      width: 100%;
+      font-size: 2rem;
+      color: #fff;
+      background-color: #636465; }
   .box_3D_container .author {
     font-family: Serif;
     position: absolute;
