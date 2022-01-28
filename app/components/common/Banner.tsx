@@ -135,7 +135,7 @@ export default function Banner(props: any) {
               <p className="name-movie">{item.title}</p>
             </div>
           ))}
-          <p className="author">HAM6 BLUE CAROUSEL</p>
+          <p className="author">HAM6 BLUE CAROUSELLLLLL</p>
         </div>
         <div id="ground" ref={refGround}></div>
       </div>
