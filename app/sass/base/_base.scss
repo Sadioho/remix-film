@@ -5,18 +5,15 @@
 }
 html {
   font-size: 62.5%;
-
   background-image: linear-gradient(
     to right bottom,
     rgba($color-green, 0.1),
     rgba($color-green-light, 0.2)
   );
-  @include respond(tab-port){
-  font-size: 52.5%;
-
+  @include respond(tab-port) {
+    font-size: 52.5%;
   }
-  @include respond(tab-land){
+  @include respond(tab-land) {
     font-size: 55.5%;
-  
-    }
+  }
 }
