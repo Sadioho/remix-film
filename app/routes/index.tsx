@@ -17,17 +17,10 @@ const contentStyle: Object = {
 export default function Index() {
   const films = useLoaderData<Film[]>();
   return (
-    <div>
+    <div className="box">
       <h1>Welcome to Remix</h1>
-      <Carousel dotPosition="bottom">
-        {films.map((item) => (
-          <div key={item?.id}>
-            <h3 style={contentStyle}>{item.original_title}</h3>
-          </div>
-        ))}
-      </Carousel>
-
-      <Link to="/detail">Films</Link>
+      <i className="fab fa-500px"></i>
+      <Link to="/detail">Detailfff</Link>
     </div>
   );
 }
