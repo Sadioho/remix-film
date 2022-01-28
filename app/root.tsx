@@ -9,10 +9,15 @@ import {
 } from 'remix';
 import type { MetaFunction } from 'remix';
 
-import styles from 'antd/dist/antd.css';
+import styles from './sass/style.css';
 
+const fontAwesome =
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: fontAwesome },
+  ];
 };
 export const meta: MetaFunction = () => {
   return { title: 'Remix Film' };

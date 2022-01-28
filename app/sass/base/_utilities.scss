@@ -1,0 +1,62 @@
+.padding-gutters {
+  padding: 7.5rem 0rem;
+}
+.padding-gutters-small {
+  padding: 2.5rem 0rem;
+}
+
+.mr-top-3 {
+  margin-top: 3rem;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.justify-content-center {
+  justify-content: center;
+} 
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.text-center {
+  text-align: center;
+}
+.item-stretch {
+  align-items: stretch;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+.align-self-stretch{
+  align-self: stretch;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+.height-25rem {
+  height: 25rem;
+  @include respond(tab-port) {
+   height: auto;
+  }
+}
+
+.dflex-center {
+  display: flex;
+  justify-content: center;
+}
+.dflex-end {
+  display: flex;
+  justify-content: end;
+}
