@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto Slab', serif;
 }
 html {
   font-size: 62.5%;
@@ -11,12 +12,10 @@ html {
     rgba($color-green, 0.1),
     rgba($color-green-light, 0.2)
   );
-  @include respond(tab-port){
-  font-size: 52.5%;
-
+  @include respond(tab-port) {
+    font-size: 52.5%;
   }
-  @include respond(tab-land){
+  @include respond(tab-land) {
     font-size: 55.5%;
-  
-    }
+  }
 }
