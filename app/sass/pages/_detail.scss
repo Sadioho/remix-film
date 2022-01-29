@@ -1,0 +1,127 @@
+.detail {
+  background-color: black;
+  color: white;
+  padding: 0 4rem;
+  &_banner {
+    width: 100%;
+    height: 40rem;
+    background-color: yellow;
+    img {
+      width: 100%;
+      height: 50rem;
+    }
+  }
+  .contents {
+    padding: 0 20rem;
+    &_content {
+      &__badge {
+        display: flex;
+        font-size: 1.6rem;
+        .badge_item:first-child {
+          padding: 0.5rem;
+          background-color: red;
+          margin-right: 0.5rem;
+        }
+        .badge_item:last-child {
+          padding: 0.5rem;
+          background-color: #e7a83e;
+        }
+      }
+      &__title {
+        font-size: 10rem;
+        font-weight: bold;
+      }
+      &__description {
+        // padding-right: 20rem;
+        text-align: justify;
+        .description_first {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+        .description_second {
+          font-size: 1.6rem;
+        }
+      }
+      &__auth {
+        padding: 0 1rem;
+        font-size: 1.6rem;
+        .row {
+          .col-6 {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+    &_view-content {
+      width: 100%;
+    }
+    &_category {
+      padding: 15rem 0;
+      margin-top: 5rem;
+      width: 100%;
+      text-align: center;
+      .btn {
+        font-size: 1.6rem;
+        padding: 1rem 3rem;
+        border: 0.1rem solid yellow;
+        outline: none;
+        background-color: black;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        &:hover {
+          border: 0.1rem solid white;
+          transition: all 0.3s;
+        }
+      }
+      &__hour {
+        .text1 {
+          margin: 0.5rem 0;
+          font-size: 3rem;
+          font-weight: bold;
+        }
+        .text2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    &_view {
+      margin: 5rem 0;
+      height: 70rem;
+      position: relative;
+      .row {
+        align-items: flex-start;
+        align-content: flex-start;
+      }
+      &__img-first {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      &__img-second {
+        width: 100%;
+        padding: 4rem;
+        text-align: justify;
+        line-height: 3rem;
+      }
+      &__img-thirst {
+        width: 61.5rem;
+        position: absolute;
+        bottom: 5rem;
+        right: 5rem;
+      }
+      &__session {
+        font-size: 1.8rem;
+      }
+      &__description {
+        font-size: 2.2rem;
+        font-weight: bold;
+      }
+      &__auth {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
