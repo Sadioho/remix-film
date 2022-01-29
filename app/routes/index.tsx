@@ -15,11 +15,11 @@ export default function Index() {
             <Banner key={item.homeSectionId} data={item} />
           )
       )}
-
+<h1>haha</h1>
       <ul className="pagination">
         <li>
           <Link className="" to="#">
-            «
+            « 
           </Link>
         </li>
         <li>
