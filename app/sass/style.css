@@ -51,7 +51,7 @@ html {
 
 .heading-3 {
   font-family: "Cookie", cursive;
-  color: #FEBD00;
+  color: #febd00;
   font-size: 2.8rem;
   list-style: 4.2rem;
   font-weight: lighter; }
@@ -1456,6 +1456,137 @@ html {
   .mx-xl-auto {
     margin-left: auto !important; } }
 
+.main {
+  font-size: 1.6rem; }
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.nav {
+  background-color: #636465;
+  padding: 1rem 1.6rem;
+  color: #fff; }
+  .nav .logo {
+    font-size: 2rem; }
+  .nav_search__input {
+    outline: none; }
+  .nav_menu li {
+    list-style: none;
+    margin-left: 1.5rem; }
+    .nav_menu li a {
+      text-decoration: none;
+      color: #d0d0d0; }
+      .nav_menu li a:hover {
+        color: #fff; }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+
+.main-layout {
+  margin-top: 4.8rem; }
+  .main-layout .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    text-align: center; }
+    .main-layout .pagination li {
+      list-style: none; }
+      .main-layout .pagination li a {
+        text-decoration: none;
+        color: #212529;
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        transition: background-color 0.4s; }
+        .main-layout .pagination li a.active {
+          background-color: #636465;
+          color: #fff; }
+        .main-layout .pagination li a:hover:not(.active) {
+          background-color: #b7b7b7; }
+
+.box_3D {
+  display: flex;
+  height: calc(100vh - 4.8rem);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  touch-action: none;
+  overflow: hidden;
+  background: #111;
+  z-index: 5; }
+  .box_3D_container__item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 8px #fff;
+    -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005); }
+    .box_3D_container__item img {
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s ease-in-out; }
+      .box_3D_container__item img:hover {
+        box-shadow: 0 0 15px #fffd;
+        -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007); }
+    .box_3D_container__item .name-movie {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: 2rem;
+      color: #fff;
+      background-color: #636465; }
+  .box_3D_container .author {
+    font-family: Serif;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg);
+    color: #fff; }
+  .box_3D #ground {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg);
+    background: -webkit-radial-gradient(center center, farthest-side, #9993, transparent); }
+
+.container_3D {
+  position: relative;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: rotateX(-10deg); }
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotateY(0deg); }
+  to {
+    transform: rotateY(360deg); } }
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg); }
+  to {
+    transform: rotateY(360deg); } }
+
+@-webkit-keyframes spinRevert {
+  from {
+    transform: rotateY(360deg); }
+  to {
+    transform: rotateY(0deg); } }
+
+@keyframes spinRevert {
+  from {
+    transform: rotateY(360deg); }
+  to {
+    transform: rotateY(0deg); } }
 .detail {
   background-color: black;
   color: white;

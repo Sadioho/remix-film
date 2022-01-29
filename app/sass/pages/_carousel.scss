@@ -1,0 +1,109 @@
+// carousel
+.box_3D {
+  display: flex;
+
+  height: calc(100vh - 4.8rem); // height-menu
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  touch-action: none;
+  overflow: hidden;
+  background: $bg-dark-1;
+  z-index: 5;
+  &_container {
+    &__item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transform-style: preserve-3d;
+      box-shadow: 0 0 8px $shadow-white;
+
+      -webkit-box-reflect: below 10px
+        linear-gradient(transparent, transparent, $bg-dark-2);
+      img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          box-shadow: 0 0 15px $shadow-white-hover;
+          -webkit-box-reflect: below 10px
+            linear-gradient(transparent, transparent, $bg-dark-3);
+        }
+      }
+      .name-movie {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        font-size: 2rem;
+        color: $color-white;
+        background-color: $color-grey-light-2;
+      }
+    }
+    .author {
+      font-family: Serif;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotateX(90deg);
+      color: $color-white;
+    }
+  }
+  #ground {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg);
+    background: -webkit-radial-gradient(
+      center center,
+      farthest-side,
+      $bg-dark-4,
+      transparent
+    );
+  }
+}
+
+.container_3D {
+  position: relative;
+  display: flex;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: rotateX(-10deg);
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@-webkit-keyframes spinRevert {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes spinRevert {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}

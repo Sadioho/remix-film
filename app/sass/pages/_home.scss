@@ -1,3 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap");
+
+// .box {
+//   background-color: red;
+//   font-family: "Roboto Slab", serif;
+//   font-size: 1.6rem;
+// }
+.main {
+  font-size: 1.6rem;
+}
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+// header
+.nav {
+  background-color: $color-grey-light-2;
+  padding: 1rem 1.6rem;
+  color: $color-white;
+  .logo {
+    font-size: 2rem;
+  }
+  &_search {
+    &__input {
+      outline: none;
+    }
+  }
+  &_menu {
+    li {
+      list-style: none;
+      margin-left: 1.5rem;
+      a {
+        text-decoration: none;
+        color: $color-grey-light;
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+// main layout
+.main-layout {
+  margin-top: $height-menu;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        color: $color-black;
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        transition: background-color 0.4s;
+        &.active {
+          background-color: $color-grey-light-2;
+          color: #fff;
+        }
+        &:hover:not(.active) {
+          background-color: $color-grey-light-1;
+        }
+      }
+    }
+  }
+}
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap');
 
 
