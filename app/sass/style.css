@@ -1655,16 +1655,15 @@ html {
     border-bottom: 1px solid black; }
 
 .card_film {
-  position: relative;
-  height: 100px;
-  width: 100%;
+  height: 300px;
   overflow: hidden; }
-  .card_film_image {
+  .card_film__image {
     width: 100%;
     height: 100%; }
-  .card_film_title {
+  .card_film__title {
     position: absolute;
-    bottom: 0; }
+    bottom: 0;
+    z-index: 15; }
 
 .detail {
   background-color: black;
