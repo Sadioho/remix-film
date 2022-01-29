@@ -1,0 +1,13 @@
+.card_film {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+  &__image {
+    width: inherit;
+    height: inherit;
+  }
+  &__title {
+    position: absolute;
+    bottom: 0;
+  }
+}

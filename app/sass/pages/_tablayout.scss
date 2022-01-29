@@ -1,0 +1,13 @@
+.tab_layout {
+  transition: all 0.5s ease-in-out;
+  &__name {
+    color: red;
+    border-right: 1px solid black;
+  }
+  .active {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: unset;
+    border-bottom: 1px solid black;
+  }
+}
