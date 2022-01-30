@@ -33,3 +33,19 @@ export default function App() {
     </html>
   );
 }
+export function ErrorBoundary({ error }: any) {
+  console.error(error);
+  return (
+    <html>
+      <head>
+        <title>Có lỗi rồi!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {error.message}
+        <Scripts />
+      </body>
+    </html>
+  );
+}

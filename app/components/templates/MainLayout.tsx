@@ -4,7 +4,7 @@ import Header from "../common/Header";
 
 export default function MainLayout() {
   return (
-    <div className="container-fluid main">
+    <div className="container-fluid main p-0">
       <Header />
       <Outlet />
       <Footer />
