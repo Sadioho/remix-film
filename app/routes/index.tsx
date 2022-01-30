@@ -11,16 +11,8 @@ export default function Index() {
 
   return (
     <div className="main-layout">
-      <Banner data={data.home[0]} />
-      {/* {data.home.map(
-        (item: Home) =>
-          item.homeSectionType !== "BANNER" && (
-            <div key={item.homeSectionId}>{item.homeSectionName}</div>
-          )
-      )} */}
-
+      {/* <Banner data={data.home[0]} /> */}
       <TabLayout data={data} />
-      <h1>haha</h1>
       <ul className="pagination">
         <li>
           <Link className="" to="#">

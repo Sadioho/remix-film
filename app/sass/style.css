@@ -1540,10 +1540,11 @@ html {
     .box_3D_container__item .name-movie {
       position: absolute;
       bottom: 0;
+      line-height: 50px;
       width: 100%;
       font-size: 2rem;
       color: #fff;
-      background-color: #636465; }
+      background: linear-gradient(to bottom, transparent, #000); }
   .box_3D_container .author {
     font-family: Serif;
     position: absolute;
@@ -1655,15 +1656,19 @@ html {
     border-bottom: 1px solid black; }
 
 .card_film {
-  height: 300px;
-  overflow: hidden; }
+  position: relative; }
   .card_film__image {
     width: 100%;
     height: 100%; }
   .card_film__title {
     position: absolute;
     bottom: 0;
-    z-index: 15; }
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent, #000); }
 
 .detail {
   background-color: black;

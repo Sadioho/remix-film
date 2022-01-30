@@ -11,7 +11,7 @@ export default function TabLayout(props: any) {
   const active = (index: number) => (index === tab ? "active" : "");
   const [tab, setTab] = useState(0);
   return (
-    <div className="tab_layout">
+    <div className="tab_layout container-fluid mt-3">
       <div className="row">
         <div className="col-3">
           {dataTab.map((item: Home, index: number) => (
@@ -24,10 +24,12 @@ export default function TabLayout(props: any) {
             </div>
           ))}
         </div>
-        <div className="col-9 row p-0">
-          {dataTab[tab].recommendContentVOList.map((item: any) => (
-            <CardFilm key={item.id} src={item.imageUrl} title={item.title} />
-          ))}
+        <div className="col-9">
+          <div className="row">
+            {dataTab[tab].recommendContentVOList.map((item: any) => (
+              <CardFilm key={item.id} src={item.imageUrl} title={item.title} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
