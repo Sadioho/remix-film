@@ -1,0 +1,29 @@
+footer {
+  background-color: black;
+  .footer {
+    color: white;
+    padding: 5rem !important;
+    &_cool {
+      &__description {
+        text-align: justify;
+        margin-top: 1.5rem;
+        line-height: 2rem;
+      }
+    }
+    .widget {
+      margin-top: 1.5rem;
+      li {
+        list-style: none;
+      }
+      .icons {
+        display: flex;
+        .icon {
+          margin-right: 1rem;
+          .fab {
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+  }
+}

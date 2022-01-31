@@ -1459,6 +1459,26 @@ html {
   .mx-xl-auto {
     margin-left: auto !important; } }
 
+footer {
+  background-color: black; }
+  footer .footer {
+    color: white;
+    padding: 5rem !important; }
+    footer .footer_cool__description {
+      text-align: justify;
+      margin-top: 1.5rem;
+      line-height: 2rem; }
+    footer .footer .widget {
+      margin-top: 1.5rem; }
+      footer .footer .widget li {
+        list-style: none; }
+      footer .footer .widget .icons {
+        display: flex; }
+        footer .footer .widget .icons .icon {
+          margin-right: 1rem; }
+          footer .footer .widget .icons .icon .fab {
+            font-size: 3rem; }
+
 .main {
   font-size: 1.6rem; }
 
