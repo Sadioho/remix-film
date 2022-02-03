@@ -1,4 +1,14 @@
+import { LoaderFunction, useLoaderData } from 'remix';
+import { getDetailData } from '~/api/detail';
+
+export const loader: LoaderFunction = async () => {
+  return getDetailData(6432);
+};
+
 export default function Index() {
+  const data = useLoaderData();
+  console.log('data', data.data);
+
   return (
     <div className="container-fluid detail">
       <div className="detail_banner">
@@ -66,12 +76,11 @@ export default function Index() {
           <div className="col-3 contents_category">
             <button className="btn">GET TICKETS</button>
             <div className="contents_category__hour">
-                  <p className="text1">Showtimes</p>
-                  <p className="text2">Monday, January 15</p>
-                  <p className="text2">MOIVEHOUSE 2</p>
-                  <span className="text2 time-first">1:00 pm</span>
-                  <span className="text2 time-second">4:00 pm</span>
-
+              <p className="text1">Showtimes</p>
+              <p className="text2">Monday, January 15</p>
+              <p className="text2">MOIVEHOUSE 2</p>
+              <span className="text2 time-first">1:00 pm</span>
+              <span className="text2 time-second">4:00 pm</span>
             </div>
           </div>
         </div>
