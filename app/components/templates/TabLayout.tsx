@@ -5,13 +5,13 @@ import CardFilm from "../common/CardFilm";
 
 export default function TabLayout(props: any) {
   const { data } = props;
-  const dataTab: Home[] = data.home.filter(
+  const dataTab: Home[] = data.filter(
     (item: Home) => item.homeSectionType !== "BANNER"
   );
   const active = (index: number) => (index === tab ? "active" : "");
   const [tab, setTab] = useState(0);
   return (
-    <div className="tab_layout container-fluid mt-3">
+    <div className="tab_layout container-fluid">
       <div className="row">
         <div className="col-3">
           {dataTab.map((item: Home, index: number) => (
@@ -24,7 +24,7 @@ export default function TabLayout(props: any) {
             </div>
           ))}
         </div>
-        <div className="col-9">
+        <div className="col-9  mt-3g">
           <div className="row">
             {dataTab[tab].recommendContentVOList.map((item: any) => (
               <CardFilm key={item.id} src={item.imageUrl} title={item.title} />
