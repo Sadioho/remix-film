@@ -3,5 +3,5 @@ export type Film = {
   id: number;
   imageUrl: string;
   jumpAddress: string;
-  title: "Because We Are Together";
+  title: string;
 };

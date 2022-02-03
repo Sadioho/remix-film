@@ -8,11 +8,11 @@ export const loader: LoaderFunction = async () => {
 };
 export default function Index() {
   const data = useLoaderData();
-
+  const dataHome = data.home;
   return (
-    <div className="main-layout">
-      {/* <Banner data={data.home[0]} /> */}
-      <TabLayout data={data} />
+    <>
+      <Banner data={dataHome[0]} />
+      <TabLayout data={dataHome} />
       <ul className="pagination">
         <li>
           <Link className="" to="#">
@@ -20,20 +20,20 @@ export default function Index() {
           </Link>
         </li>
         <li>
-          <Link to="#" className="active">
+          <Link to="/1" className="active">
             1
           </Link>
         </li>
         <li>
-          <Link to="#">2</Link>
+          <Link to="/2">2</Link>
         </li>
         <li>
-          <Link to="#">3</Link>
+          <Link to="/3">3</Link>
         </li>
         <li>
           <Link to="#">»</Link>
         </li>
       </ul>
-    </div>
+    </>
   );
 }

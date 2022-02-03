@@ -6,7 +6,9 @@ export default function MainLayout() {
   return (
     <div className="container-fluid main p-0">
       <Header />
-      <Outlet />
+      <div className="main-layout">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
