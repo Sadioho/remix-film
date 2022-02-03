@@ -27,7 +27,7 @@ export default function TabLayout(props: any) {
         <div className="col-9  mt-3g">
           <div className="row">
             {dataTab[tab].recommendContentVOList.map((item: any) => (
-              <CardFilm key={item.id} src={item.imageUrl} title={item.title} />
+              <CardFilm key={item.id} src={item.imageUrl} title={item.title} id={item.id}/>
             ))}
           </div>
         </div>

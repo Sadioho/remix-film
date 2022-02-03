@@ -1,21 +1,28 @@
-import { LoaderFunction, useLoaderData, useSearchParams } from 'remix';
+import { LoaderFunction, useLoaderData } from 'remix';
 import { getDetailData } from '~/api/detail';
 
 export const loader: LoaderFunction = async ({ request }) => {
-  let url = new URL(request.url);
-  let filmID: string | null = url.searchParams.get('id');
-  let id: number = Number(filmID);
-  return getDetailData(id);
+//   let url = new URL(request.url);
+//   let term = url.searchParams.get('10903');
+//   console.log(
+//     '🚀 ~ file: $indexID.tsx ~ line 7 ~ constloader:LoaderFunction= ~ term',
+//     term
+//   );
+
+  return getDetailData(6432);
 };
 
 export default function Index() {
-  const film = useLoaderData().data;
-  console.log('data', film);
+  const data = useLoaderData();
+//   console.log('data', data.data);
 
   return (
     <div className="container-fluid detail">
       <div className="detail_banner">
-        <img src={film.coverHorizontalUrl} alt={film.aliasName} />
+        <img
+          src="https://img2.thuthuatphanmem.vn/uploads/2019/02/22/hinh-nen-gai-xinh-full-hd_121751381.jpg"
+          alt=""
+        />
       </div>
 
       <div className="contents">
@@ -30,10 +37,18 @@ export default function Index() {
                   <p>SHOWN IN 35MM</p>
                 </div>
               </div>
-              <div className="contents_content__title">{film.name}</div>
+              <div className="contents_content__title">PHANTOM THREAD</div>
               <div className="container contents_content__description ">
                 <p className="description_first mt-5 mb-5">
-                  {film.introduction}
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Corporis minima reprehenderit quidem eveniet architecto
+                  dolores molestiae perspiciatis blanditiis rerum numquam soluta
+                  repellendus animi perferendis, expedita laudantium impedit
+                  repellat enim quis! Et recusandae rerum fugiat doloribus
+                  consectetur deserunt provident laudantium tempore ab expedita
+                  earum repellendus eveniet, molestias, doloremque quas
+                  distinctio similique molestiae quis sed enim minus odit
+                  reiciendis. Nisi, voluptates autem?
                 </p>
                 <p className="description_second">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -79,7 +94,7 @@ export default function Index() {
         <div className="contents_review mt-5">
           <video
             className="vid"
-            src={film.video}
+            src="https%3A%2F%2Fsubtitles.netpop.app%2Fsubtitles%2F20211220%2F1639967257015_Snowdrop.S01E01.1080p.DSNP.WEB-DL.AAC2.0.H.264-NYH%5Bvi%5D.srt"
             controls
             height="500"
             width="100%"
@@ -89,12 +104,15 @@ export default function Index() {
         <div className="contents_view">
           <img
             className="contents_view__img-thirst "
-            src={film.coverHorizontalUrl}
+            src="https://img2.thuthuatphanmem.vn/uploads/2019/02/22/hinh-nen-gai-xinh-full-hd_121751381.jpg"
             alt=""
           />
           <div className="row">
             <div className="col-6 col-md-6 col-xs-6 col-sm-6 col-lg-6 contents_view__img-first">
-              <img src={film.coverVerticalUrl} alt="" />
+              <img
+                src="https://img2.thuthuatphanmem.vn/uploads/2019/02/22/hinh-nen-gai-xinh-full-hd_121751381.jpg"
+                alt=""
+              />
             </div>
             <div className="col-6 col-md-6 col-xs-6 col-sm-6 col-lg-6 contents_view__img-second">
               <p className="contents_view__session">10/10</p>

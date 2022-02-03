@@ -13,7 +13,7 @@ export async function getDetailData(params: number) {
     }
   );
   const results = await response.json();
-  console.log(results.data);
+  // console.log(results.data);
 
   return results;
 }
