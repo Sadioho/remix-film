@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { Link } from "remix";
 import { Film } from "~/api/films";
 
 export default function Banner(props: any) {
@@ -76,7 +77,6 @@ export default function Banner(props: any) {
 
     // setup events
     document.onpointerdown = (e) => {
-      // clearInterval(odrag.timer);
       e = e || window.event;
       let sX = e.clientX,
         sY = e.clientY;
@@ -95,7 +95,6 @@ export default function Banner(props: any) {
       };
 
       document.onpointerup = (e) => {
-        // odrag.timer = setInterval(() => {
         setInterval(() => {
           desX *= 0.95;
           desY *= 0.95;
@@ -104,7 +103,6 @@ export default function Banner(props: any) {
           applyTranform(odrag);
           playSpin(false);
           if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-            // clearInterval(odrag.timer);
             playSpin(true);
           }
         }, 17);
@@ -121,13 +119,6 @@ export default function Banner(props: any) {
         : radius > 550
         ? (radius = 550)
         : (radius += d);
-
-      // imgWidth < 250
-      //   ? (imgWidth = 250)
-      //   : imgWidth > 450
-      //   ? (imgWidth = 450)
-      //   : (imgWidth += d / 2);
-
       imgWidth += d / 2;
 
       if (circleSpin) {
@@ -145,7 +136,12 @@ export default function Banner(props: any) {
       <div ref={refDrag} className="box_3D_container container_3D">
         <div ref={refSpin} className="container_3D">
           {films.map((item: Film) => (
-            <div key={item.id} className="box_3D_container__item item-carousel">
+            <div
+              // to={`/detail?id=${item.id}`}
+              title={props.title}
+              key={item.id}
+              className="box_3D_container__item item-carousel"
+            >
               <img src={item.imageUrl} alt={item.title || "image carousel"} />
               <p className="name-movie py-1">{item.title}</p>
             </div>

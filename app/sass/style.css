@@ -1669,13 +1669,17 @@ footer {
 .tab_layout {
   transition: all 0.5s ease-in-out; }
   .tab_layout__name {
-    color: red;
-    border-right: 1px solid black; }
+    color: white;
+    border-right: 1px solid #b7b7b7;
+    cursor: pointer; }
+    .tab_layout__name:hover {
+      background-color: #d0d0d0;
+      color: #000; }
   .tab_layout .active {
-    border-left: 1px solid black;
-    border-top: 1px solid black;
+    border-left: 1px solid #b7b7b7;
+    border-top: 1px solid #b7b7b7;
     border-right: unset;
-    border-bottom: 1px solid black; }
+    border-bottom: 1px solid #b7b7b7; }
 
 .card_film {
   position: relative;
