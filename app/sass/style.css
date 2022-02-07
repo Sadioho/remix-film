@@ -1709,14 +1709,12 @@ footer {
 
 .detail {
   background-color: black;
-  color: white;
-  padding: 0 4rem; }
+  color: white; }
   .detail_banner {
     width: 100%;
-    height: 70vh; }
+    height: 50rem; }
     .detail_banner img {
-      width: 100%;
-      height: 70vh; }
+      width: 100%; }
   .detail .contents {
     padding: 0 20rem; }
     .detail .contents_content__badge {
@@ -1746,7 +1744,10 @@ footer {
         display: flex;
         flex-direction: column; }
     .detail .contents_view-content {
-      width: 100%; }
+      width: 100%;
+      padding: 2rem;
+      border-radius: 2rem;
+      background-color: rgba(0, 0, 0, 0.37); }
     .detail .contents_category {
       padding: 15rem 0;
       margin-top: 5rem;
@@ -1772,8 +1773,7 @@ footer {
         font-size: 1.5rem; }
     .detail .contents_view {
       margin: 5rem 0;
-      position: relative;
-      padding: 5rem 0; }
+      position: relative; }
       .detail .contents_view .row {
         align-items: flex-start;
         align-content: flex-start; }
@@ -1786,11 +1786,6 @@ footer {
         padding: 4rem;
         text-align: justify;
         line-height: 3rem; }
-      .detail .contents_view__img-thirst {
-        width: 61.5rem;
-        position: absolute;
-        bottom: 5rem;
-        right: 5rem; }
       .detail .contents_view__session {
         font-size: 1.8rem; }
       .detail .contents_view__description {
@@ -1798,3 +1793,9 @@ footer {
         font-weight: bold; }
       .detail .contents_view__auth {
         font-size: 1.8rem; }
+  .detail .list-img {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .detail .list-img img {
+      margin-top: 4.5rem; }
