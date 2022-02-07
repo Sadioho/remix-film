@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "remix";
 import { Home } from "~/api/home";
-import CardFilm from "../common/CardFilm";
+import RenderImage from "../common/RenderImage";
 
 export default function TabLayout(props: any) {
   const { data } = props;
@@ -26,12 +27,20 @@ export default function TabLayout(props: any) {
         <div className="col-9  mt-3g">
           <div className="row">
             {dataTab[tab].recommendContentVOList.map((item: any) => (
-              <CardFilm
-                key={item.id}
-                src={item.imageUrl}
+              <Link
+                to={`/detail?id=${item.id}`}
                 title={item.title}
-                id={item.id}
-              />
+                className="col-2 p-3"
+              >
+                <div className="card_film">
+                  <RenderImage
+                    src={item.imageUrl}
+                    className="card_film__image"
+                    alt={item.title || "image"}
+                  />
+                  <div className="card_film__title">{item.title}</div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

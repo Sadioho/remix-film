@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "remix";
 import { Film } from "~/api/films";
+import RenderImage from "./RenderImage";
 
 export default function Banner(props: any) {
   const { data } = props;
@@ -21,17 +22,17 @@ export default function Banner(props: any) {
     const images: any = circleSpin?.getElementsByClassName("item-carousel");
     const elements = [...images]; // arrays
     const init = (delayTime: any) => {
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].style.transform =
+      elements.map((item, index) => {
+        item.style.transform =
           "rotateY(" +
-          i * (360 / elements.length) +
+          index * (360 / elements.length) +
           "deg) translateZ(" +
           radius +
           "px)";
-        elements[i].style.transition = "transform 1s";
-        elements[i].style.transitionDelay =
-          delayTime || (elements.length - i) / 4 + "s";
-      }
+        item.style.transition = "transform 1s";
+        item.style.transitionDelay =
+          delayTime || (elements.length - index) / 4 + "s";
+      });
     };
     if (odrag) odrag.style.transform = "rotateX(0deg) rotateY(0deg)";
 
@@ -138,11 +139,14 @@ export default function Banner(props: any) {
           {films.map((item: Film) => (
             <Link
               to={item.jumpAddress.replace("://", "/")}
-              title={props.title}
+              title={item.title}
               key={item.id}
               className="box_3D_container__item item-carousel"
             >
-              <img src={item.imageUrl} alt={item.title || "image carousel"} />
+              <RenderImage
+                src={item.imageUrl}
+                alt={item.title || "image carousel"}
+              />
               <p className="name-movie py-1">{item.title}</p>
             </Link>
           ))}
