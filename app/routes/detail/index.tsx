@@ -1,16 +1,45 @@
-import { LoaderFunction, useLoaderData, useSearchParams } from "remix";
-import { getDetailData } from "~/api/detail";
+import {
+  ActionFunction,
+  Form,
+  LoaderFunction,
+  MetaFunction,
+  redirect,
+  useLoaderData,
+  useSearchParams,
+} from 'remix';
+import { addComment, CommentEntry } from '~/api/comment';
+import { getDetailData } from '~/api/detail';
 
 export const loader: LoaderFunction = async ({ request }) => {
   let url = new URL(request.url);
-  let filmID: string | null = url.searchParams.get("id");
+  let filmID: string | null = url.searchParams.get('id');
   let id: number = Number(filmID);
   return getDetailData(id);
+};
+// export const action: ActionFunction = async ({ request, params }) => {
+//   console.log('🚀 ~ constaction:ActionFunction= ~ request', request);
+//   console.log('🚀 ~ constaction:ActionFunction= ~ data', params);
+//   let url = new URL(request.url);
+//   let filmID: string | null = url.searchParams.get('id');
+//   console.log('🚀 ~ constaction:ActionFunction= ~ filmID', filmID);
+
+//   const body = await request.formData();
+//   const comment: CommentEntry = {
+//     name: body.get('name') as string,
+//     message: body.get('message') as string,
+//     filmId: params.id as string,
+//   };
+//   await addComment(comment);
+
+//   return redirect(`/detail?id=10999`);
+// };
+export const meta: MetaFunction = ({ data }) => {
+  return { title: data.data.name, description: data.data.introduction };
 };
 
 export default function Index() {
   const film = useLoaderData().data;
-  console.log("data", film);
+  // console.log('data', film);
 
   return (
     <div className="container-fluid detail">
@@ -70,7 +99,7 @@ export default function Index() {
             <div className="contents_category__hour">
               <p className="text1">Showtimes</p>
               <p className="text2">Monday, January 15</p>
-              <p className="text2">MOIVEHOUSE 2</p>
+              <p className="text2">{film.name}</p>
               <span className="text2 time-first">1:00 pm</span>
               <span className="text2 time-second">4:00 pm</span>
             </div>
@@ -78,20 +107,15 @@ export default function Index() {
         </div>
         <div className="contents_review mt-5">
           <video
-            className="vid"
-            src={film.video}
+            src="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4"
+            autoPlay
             controls
-            height="500"
+            crossOrigin="anonymous"
             width="100%"
           ></video>
         </div>
         {/* view img */}
         <div className="contents_view">
-          <img
-            className="contents_view__img-thirst "
-            src={film.coverHorizontalUrl}
-            alt=""
-          />
           <div className="row">
             <div className="col-6 col-md-6 col-xs-6 col-sm-6 col-lg-6 contents_view__img-first">
               <img src={film.coverVerticalUrl} alt="" />
@@ -99,14 +123,43 @@ export default function Index() {
             <div className="col-6 col-md-6 col-xs-6 col-sm-6 col-lg-6 contents_view__img-second">
               <p className="contents_view__session">10/10</p>
               <p className="contents_view__description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Corporis minima reprehenderit quidem eveniet architecto dolores
-                molestiae perspiciatis blanditiis rerum numquam soluta
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+                incidunt qui alias sit itaque voluptate atque beatae rerum
+                aliquam totam quisquam fugit, excepturi sequi aperiam
+                accusantium ad, eligendi perferendis. Sunt! Aliquam dignissimos
+                in sunt aspernatur rem, culpa veritatis nulla animi cumque ipsa
+                molestiae velit. Soluta quidem sapiente nesciunt, adipisci
+                magnam qui ea ratione, cumque, vero libero nemo atque in
+                tenetur. Dicta, ducimus. Ullam, quis obcaecati corporis
+                distinctio, possimus perspiciatis, rem atque doloribus sequi
+                blanditiis error quisquam hic consequatur? Nesciunt quam ipsum
+                asperiores officia impedit soluta assumenda enim sit
+                perspiciatis a!
               </p>
-              <p className="contents_view__auth">-Danny Ho</p>
+              <p className="contents_view__auth">___Danny Ho</p>
             </div>
           </div>
         </div>
+        <div className="list-img">
+          {film.likeList.map((item: any) => (
+            <img
+              key={item.id}
+              width={250}
+              height={250}
+              src={item.coverHorizontalUrl}
+              alt=""
+            />
+          ))}
+        </div>
+        <Form method="post">
+          <fieldset>
+            <label>Name:</label>
+            <input type="text" name="name" />
+            <label>Messeger:</label>
+            <input type="text" name="messeger" />
+            <button type="submit">Add Comment</button>
+          </fieldset>
+        </Form>
       </div>
     </div>
   );
