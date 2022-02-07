@@ -3,7 +3,9 @@ import { Form, Link } from "remix";
 export default function Header() {
   return (
     <nav className="nav sticky flex-between-center">
-      <div className="logo">REMIX.Movie</div>
+      <Link to="/" className="logo">
+        REMIX.Movie
+      </Link>
       <Form
         reloadDocument
         method="get"

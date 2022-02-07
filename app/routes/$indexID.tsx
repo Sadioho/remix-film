@@ -1,20 +1,20 @@
-import { LoaderFunction, useLoaderData } from 'remix';
-import { getDetailData } from '~/api/detail';
+import { LoaderFunction, useLoaderData } from "remix";
+import { getDetailData } from "~/api/detail";
 
 export const loader: LoaderFunction = async ({ request }) => {
-//   let url = new URL(request.url);
-//   let term = url.searchParams.get('10903');
-//   console.log(
-//     '🚀 ~ file: $indexID.tsx ~ line 7 ~ constloader:LoaderFunction= ~ term',
-//     term
-//   );
+  //   let url = new URL(request.url);
+  //   let term = url.searchParams.get('10903');
+  //   console.log(
+  //     '🚀 ~ file: $indexID.tsx ~ line 7 ~ constloader:LoaderFunction= ~ term',
+  //     term
+  //   );
 
   return getDetailData(6432);
 };
 
 export default function Index() {
   const data = useLoaderData();
-//   console.log('data', data.data);
+  //   console.log('data', data.data);
 
   return (
     <div className="container-fluid detail">

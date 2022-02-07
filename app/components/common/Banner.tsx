@@ -4,7 +4,6 @@ import { Film } from "~/api/films";
 
 export default function Banner(props: any) {
   const { data } = props;
-  console.log("Banner ~ data", data);
   const films = data.recommendContentVOList;
   const refDrag = useRef<HTMLDivElement>(null);
   const refSpin = useRef<HTMLDivElement>(null);
@@ -137,15 +136,15 @@ export default function Banner(props: any) {
       <div ref={refDrag} className="box_3D_container container_3D">
         <div ref={refSpin} className="container_3D">
           {films.map((item: Film) => (
-            <div
-              // to={`/detail?id=${item.id}`}
+            <Link
+              to={item.jumpAddress.replace("://", "/")}
               title={props.title}
               key={item.id}
               className="box_3D_container__item item-carousel"
             >
               <img src={item.imageUrl} alt={item.title || "image carousel"} />
               <p className="name-movie py-1">{item.title}</p>
-            </div>
+            </Link>
           ))}
           <p className="author">HAM6 BLUE CAROUSEL</p>
         </div>
