@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap");
 
 // .box {
 //   background-color: red;
@@ -21,6 +21,8 @@
   color: $color-white;
   .logo {
     font-size: 2rem;
+    text-decoration: none;
+    color: $color-white;
   }
   &_search {
     &__input {
@@ -61,11 +63,11 @@
         text-decoration: none;
         color: $color-black;
         padding: 0.5rem 1rem;
-        border: 1px solid #ddd;
+        border: 1px solid $border-white;
         transition: background-color 0.4s;
         &.active {
           background-color: $color-grey-light-2;
-          color: #fff;
+          color: $color-white;
         }
         &:hover:not(.active) {
           background-color: $color-grey-light-1;
@@ -74,4 +76,4 @@
     }
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap");

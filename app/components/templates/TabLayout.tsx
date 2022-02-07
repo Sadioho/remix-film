@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Film } from "~/api/films";
 import { Home } from "~/api/home";
 import CardFilm from "../common/CardFilm";
 
@@ -27,7 +26,12 @@ export default function TabLayout(props: any) {
         <div className="col-9  mt-3g">
           <div className="row">
             {dataTab[tab].recommendContentVOList.map((item: any) => (
-              <CardFilm key={item.id} src={item.imageUrl} title={item.title} id={item.id}/>
+              <CardFilm
+                key={item.id}
+                src={item.imageUrl}
+                title={item.title}
+                id={item.id}
+              />
             ))}
           </div>
         </div>

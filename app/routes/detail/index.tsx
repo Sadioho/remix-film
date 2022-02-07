@@ -1,16 +1,16 @@
-import { LoaderFunction, useLoaderData, useSearchParams } from 'remix';
-import { getDetailData } from '~/api/detail';
+import { LoaderFunction, useLoaderData, useSearchParams } from "remix";
+import { getDetailData } from "~/api/detail";
 
 export const loader: LoaderFunction = async ({ request }) => {
   let url = new URL(request.url);
-  let filmID: string | null = url.searchParams.get('id');
+  let filmID: string | null = url.searchParams.get("id");
   let id: number = Number(filmID);
   return getDetailData(id);
 };
 
 export default function Index() {
   const film = useLoaderData().data;
-  console.log('data', film);
+  console.log("data", film);
 
   return (
     <div className="container-fluid detail">
