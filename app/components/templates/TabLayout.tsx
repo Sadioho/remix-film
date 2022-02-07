@@ -31,6 +31,7 @@ export default function TabLayout(props: any) {
                 to={`/detail?id=${item.id}`}
                 title={item.title}
                 className="col-2 p-3"
+                key={item.id}
               >
                 <div className="card_film">
                   <RenderImage

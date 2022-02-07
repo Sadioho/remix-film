@@ -58,62 +58,59 @@ export default function Banner(props: any) {
         )}s infinite linear`;
     }
 
-    // // setup events
-    // let desX = 0,
-    // desY = 0,
-    // tX = 0,
-    // tY = 10;
-    // const applyTranform = (obj: any) => {
-    //   // Constrain the angle of camera (between 0 and 180)
-    //   if (tY > 180) tY = 180;
-    //   if (tY < 0) tY = 0;
+    // setup events
+    let desX = 0,
+      desY = 0,
+      tX = 0,
+      tY = 10;
+    const applyTranform = (obj: any) => {
+      // Constrain the angle of camera (between 0 and 180)
+      if (tY > 180) tY = 180;
+      if (tY < 0) tY = 0;
 
-    //   // Apply the angle
-    //   obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
-    // };
+      // Apply the angle
+      obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
+    };
 
-    // const playSpin = (yes: any) => {
-    //   if (circleSpin)
-    //     circleSpin.style.animationPlayState = yes ? "running" : "paused";
-    // };
-    // document.onpointerdown = (e) => {
-    //   e = e || window.event;
-    //   let sX = e.clientX,
-    //     sY = e.clientY;
-    //   // thả chuột
-    //   document.onpointermove = (e) => {
-    //     e = e || window.event;
-    //     const nX = e.clientX,
-    //       nY = e.clientY;
-    //     desX = nX - sX;
-    //     desY = nY - sY;
-    //     tX += desX * 0.1;
-    //     tY += desY * 0.1;
-    //     applyTranform(odrag);
-    //     sX = nX;
-    //     sY = nY;
-    //   };
-    //   // nhấn chuột
-    //   document.onpointerup = (e) => {
-    //     setInterval(() => {
-    //       desX *= 0.95;
-    //       desY *= 0.95;
-    //       tX += desX * 0.1;
-    //       tY += desY * 0.1;
-    //       applyTranform(odrag);
-    //       playSpin(false);
-    //       if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-    //         playSpin(true);
-    //       }
-    //     }, 17);
-    //     document.onpointermove = document.onpointerup = null;
-    //   };
-    //   return false;
-    // };
+    const playSpin = (yes: any) => {
+      if (circleSpin)
+        circleSpin.style.animationPlayState = yes ? "running" : "paused";
+    };
+    document.onpointerdown = (e) => {
+      let sX = e.clientX,
+        sY = e.clientY;
+      // thả chuột
+      document.onpointermove = (e) => {
+        const nX = e.clientX,
+          nY = e.clientY;
+        desX = nX - sX;
+        desY = nY - sY;
+        tX += desX * 0.1;
+        tY += desY * 0.1;
+        applyTranform(odrag);
+        sX = nX;
+        sY = nY;
+      };
+      // nhấn chuột
+      document.onpointerup = (e) => {
+        setInterval(() => {
+          desX *= 0.95;
+          desY *= 0.95;
+          tX += desX * 0.1;
+          tY += desY * 0.1;
+          applyTranform(odrag);
+          playSpin(false);
+          if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+            playSpin(true);
+          }
+        }, 17);
+        document.onpointermove = document.onpointerup = null;
+      };
+      return false;
+    };
 
     // // xoay lăn chuột
     // document.onwheel = (e) => {
-    //   e = e || window.event;
     //   const d = e.deltaY / 20 || -e.detail;
     //   radius < 250
     //     ? (radius = 250)
