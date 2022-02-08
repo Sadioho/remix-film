@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import { Form, Link } from "remix";
 
 export default function Header() {
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <nav className="nav sticky flex-between-center">
       <Link to="/" className="logo">
@@ -12,10 +14,12 @@ export default function Header() {
         className="nav_search flex-between-center"
       >
         <input
+          ref={inputRef}
           type="text"
           name="title"
           placeholder="Type a title..."
           className="nav_search__input py-2 px-3"
+          onClick={() => inputRef.current?.focus()}
         />
         <button type="submit" className="nav_search__btn py-2 px-3">
           Search

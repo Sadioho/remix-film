@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import imgDefault from "../../image/imagesDefault.jpg";
 export default function RenderImage(props: any) {
-  const path = props.src;
+  const { src } = props;
   const refImage = useRef<HTMLImageElement>(null);
   const [isLoad, setIsLoad] = useState<Boolean>(false);
   useEffect(() => {
     const image: any = refImage.current;
-    if (path) {
+    if (src) {
       image.onerror = () => {
         setIsLoad(false);
       };
       image.onload = () => {
         setIsLoad(true);
       };
-      image.src = path;
+      image.src = src;
     } else {
       image.src = imgDefault;
     }
@@ -21,8 +21,8 @@ export default function RenderImage(props: any) {
       image.onerror = null;
       image.onload = null;
     };
-  }, [path]);
+  }, [src]);
   return (
-    <img ref={refImage} src={isLoad ? path : imgDefault} alt="" {...props} />
+    <img ref={refImage} src={isLoad ? src : imgDefault} alt="" {...props} />
   );
 }

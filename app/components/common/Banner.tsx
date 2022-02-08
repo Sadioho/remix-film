@@ -93,17 +93,17 @@ export default function Banner(props: any) {
       };
       // nhấn chuột
       document.onpointerup = (e) => {
-        // setInterval(() => {
-        desX *= 0.95;
-        desY *= 0.95;
-        tX += desX * 0.1;
-        tY += desY * 0.1;
-        applyTranform(odrag);
-        playSpin(false);
-        if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
-          playSpin(true);
-        }
-        // }, 17);
+        setInterval(() => {
+          desX *= 0.95;
+          desY *= 0.95;
+          tX += desX * 0.1;
+          tY += desY * 0.1;
+          applyTranform(odrag);
+          playSpin(false);
+          if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+            playSpin(true);
+          }
+        }, 17);
         document.onpointermove = document.onpointerup = null;
       };
       return false;
