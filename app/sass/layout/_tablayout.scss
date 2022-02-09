@@ -1,0 +1,59 @@
+.tab_layout {
+  transition: all 0.5s ease-in-out;
+  .tabfilm {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 15;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    &__icon {
+      position: absolute;
+      left: 0;
+      top: 35%;
+      z-index: 15;
+      font-size: 5rem;
+      background-color: red;
+    }
+    &:hover .tabfilm__list {
+      transform: rotateY(0deg) translateY(-50%);
+    }
+    &__list {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      z-index: 16;
+      height: max-content;
+      background: gray;
+      border-right: 1px solid yellow;
+      transition: transform 0.24s linear;
+      backface-visibility: hidden;
+      transform-origin: left;
+      transform: perspective(1000px) rotateY(90deg) translateY(-50%);
+      & li {
+        border-bottom: 1px solid yellow;
+      }
+      & a {
+        display: block;
+        width: max-content;
+        padding-right: 1.6rem;
+        height: 64px;
+        line-height: 64px;
+        text-indent: 1em;
+        font-size: 1.4em;
+        text-decoration: none;
+        color: white;
+        text-shadow: 0 1px 0 blue;
+        transition: all 0.5s ease;
+        &:hover {
+          color: pink;
+          transform: translateX(-14px);
+        }
+      }
+    }
+  }
+  .active {
+    background-color: red;
+  }
+}

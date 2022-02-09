@@ -14,35 +14,7 @@
   justify-content: space-between;
   align-items: center;
 }
-// header
-.nav {
-  background-color: $color-grey-light-2;
-  padding: 1rem 1.6rem;
-  color: $color-white;
-  .logo {
-    font-size: 2rem;
-    text-decoration: none;
-    color: $color-white;
-  }
-  &_search {
-    &__input {
-      outline: none;
-    }
-  }
-  &_menu {
-    li {
-      list-style: none;
-      margin-left: 1.5rem;
-      a {
-        text-decoration: none;
-        color: $color-grey-light;
-        &:hover {
-          color: $color-white;
-        }
-      }
-    }
-  }
-}
+
 .sticky {
   position: fixed;
   top: 0;
