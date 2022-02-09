@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "remix";
 import { Film } from "~/api/films";
-import RenderImage from "./RenderImage";
+import RenderImage from "./CardFilm";
 
 export default function Banner(props: any) {
   const { data } = props;
@@ -140,10 +140,7 @@ export default function Banner(props: any) {
               key={item.id}
               className="box_3D_container__item item-carousel"
             >
-              <RenderImage
-                src={item.imageUrl}
-                alt={item.title || "image carousel"}
-              />
+              <img src={item.imageUrl} alt={item.title || "image carousel"} />
               <p className="name-movie py-1">{item.title}</p>
             </Link>
           ))}
