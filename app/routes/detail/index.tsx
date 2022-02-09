@@ -16,23 +16,21 @@ export const loader: LoaderFunction = async ({ request }) => {
   let id: number = Number(filmID);
   return getDetailData(id);
 };
-// export const action: ActionFunction = async ({ request, params }) => {
-//   console.log('🚀 ~ constaction:ActionFunction= ~ request', request);
-//   console.log('🚀 ~ constaction:ActionFunction= ~ data', params);
-//   let url = new URL(request.url);
-//   let filmID: string | null = url.searchParams.get('id');
-//   console.log('🚀 ~ constaction:ActionFunction= ~ filmID', filmID);
+export const action: ActionFunction = async ({ request, params }) => {
+  let url = new URL(request.url);
+  let filmID: string | null = url.searchParams.get('id');
+  console.log('🚀 ~ constaction:ActionFunction= ~ filmID', filmID);
 
-//   const body = await request.formData();
-//   const comment: CommentEntry = {
-//     name: body.get('name') as string,
-//     message: body.get('message') as string,
-//     filmId: params.id as string,
-//   };
-//   await addComment(comment);
+  const body = await request.formData();
+  const comment: CommentEntry = {
+    name: body.get('name') as string,
+    message: body.get('message') as string,
+    filmId: params.id as string,
+  };
+  await addComment(comment);
 
-//   return redirect(`/detail?id=10999`);
-// };
+  return redirect(`?id=10999`);
+};
 export const meta: MetaFunction = ({ data }) => {
   return { title: data.data.name, description: data.data.introduction };
 };

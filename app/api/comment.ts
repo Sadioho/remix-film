@@ -5,21 +5,23 @@ export type CommentEntry = {
 };
 
 export async function getComments(filmId: string) {
-  const response = await fetch(
-    `http://localhost:3001/comments?filmId=${filmId}`
-  );
+  //   const response = await fetch(
+  //     `http://localhost:3001/comments?filmId=${filmId}`
+  //   );
 
-  return response.json();
+  //   return response.json();\
+  return null;
 }
 
 export async function addComment(comment: CommentEntry) {
-  const response = await fetch('http://localhost:3001/comments', {
-    method: 'POST',
-    body: JSON.stringify(comment),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  //   const response = await fetch('http://localhost:3001/comments', {
+  //     method: 'POST',
+  //     body: JSON.stringify(comment),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
 
-  return response.json();
+  //   return response.json();
+  return null;
 }
