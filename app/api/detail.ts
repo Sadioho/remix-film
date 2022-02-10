@@ -1,4 +1,11 @@
-export type Detail = {};
+import { getComments } from './comment';
+
+export type Detail = {
+  id: string;
+  name: string;
+  introduction: string;
+  likeList: [];
+};
 
 export async function getDetailData(params: number) {
   const response = await fetch(
@@ -12,8 +19,8 @@ export async function getDetailData(params: number) {
       },
     }
   );
+  const comments = getComments(params);
   const results = await response.json();
-  // console.log(results.data);
 
-  return results;
+  return { comments, results };
 }
