@@ -14,7 +14,12 @@
       top: 35%;
       z-index: 15;
       font-size: 5rem;
-      background-color: red;
+      width: 6.4rem;
+      height: 6.4rem;
+      line-height: 6.4rem;
+      text-align: center;
+      border-radius: 0.4rem;
+      background-color: grey;
     }
     &:hover .tabfilm__list {
       transform: rotateY(0deg) translateY(-50%);
@@ -25,15 +30,37 @@
       top: 50%;
       z-index: 16;
       height: max-content;
-      background: gray;
-      border-right: 1px solid yellow;
+      background: $color-black;
       transition: transform 0.24s linear;
       backface-visibility: hidden;
       transform-origin: left;
+      border-radius: 0 8px 8px 0;
+      overflow: hidden;
       transform: perspective(1000px) rotateY(90deg) translateY(-50%);
       & li {
-        border-bottom: 1px solid yellow;
+        border-bottom: solid 1px $color-white;
+        &.active {
+          background-color: $color-grey-light;
+          & a {
+            color: $color-text-dark;
+          }
+        }
+        &:hover {
+          background-color: $color-grey-light;
+          &:after {
+            transform: scaleX(1);
+          }
+        }
+        &:after {
+          display: block;
+          content: "";
+          border-bottom: solid 3px #019fb6;
+          transform: scaleX(0);
+          transition: transform 0.5s ease-in-out;
+          transform-origin: 0% 50%;
+        }
       }
+
       & a {
         display: block;
         width: max-content;
@@ -44,16 +71,13 @@
         font-size: 1.4em;
         text-decoration: none;
         color: white;
-        text-shadow: 0 1px 0 blue;
+        text-shadow: 0 1px 0 $color-grey-light-1;
         transition: all 0.5s ease;
         &:hover {
-          color: pink;
           transform: translateX(-14px);
+          color: $color-text-dark;
         }
       }
     }
-  }
-  .active {
-    background-color: red;
   }
 }

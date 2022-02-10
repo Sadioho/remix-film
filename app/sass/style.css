@@ -1494,7 +1494,12 @@ html {
       top: 35%;
       z-index: 15;
       font-size: 5rem;
-      background-color: red; }
+      width: 6.4rem;
+      height: 6.4rem;
+      line-height: 6.4rem;
+      text-align: center;
+      border-radius: 0.4rem;
+      background-color: grey; }
     .tab_layout .tabfilm:hover .tabfilm__list {
       transform: rotateY(0deg) translateY(-50%); }
     .tab_layout .tabfilm__list {
@@ -1503,14 +1508,30 @@ html {
       top: 50%;
       z-index: 16;
       height: max-content;
-      background: gray;
-      border-right: 1px solid yellow;
+      background: #212529;
       transition: transform 0.24s linear;
       backface-visibility: hidden;
       transform-origin: left;
+      border-radius: 0 8px 8px 0;
+      overflow: hidden;
       transform: perspective(1000px) rotateY(90deg) translateY(-50%); }
       .tab_layout .tabfilm__list li {
-        border-bottom: 1px solid yellow; }
+        border-bottom: solid 1px #fff; }
+        .tab_layout .tabfilm__list li.active {
+          background-color: #d0d0d0; }
+          .tab_layout .tabfilm__list li.active a {
+            color: #000; }
+        .tab_layout .tabfilm__list li:hover {
+          background-color: #d0d0d0; }
+          .tab_layout .tabfilm__list li:hover:after {
+            transform: scaleX(1); }
+        .tab_layout .tabfilm__list li:after {
+          display: block;
+          content: "";
+          border-bottom: solid 3px #019fb6;
+          transform: scaleX(0);
+          transition: transform 0.5s ease-in-out;
+          transform-origin: 0% 50%; }
       .tab_layout .tabfilm__list a {
         display: block;
         width: max-content;
@@ -1521,13 +1542,11 @@ html {
         font-size: 1.4em;
         text-decoration: none;
         color: white;
-        text-shadow: 0 1px 0 blue;
+        text-shadow: 0 1px 0 #b7b7b7;
         transition: all 0.5s ease; }
         .tab_layout .tabfilm__list a:hover {
-          color: pink;
-          transform: translateX(-14px); }
-  .tab_layout .active {
-    background-color: red; }
+          transform: translateX(-14px);
+          color: #000; }
 
 footer {
   background-color: black; }
@@ -1711,7 +1730,7 @@ footer {
   .card_film__image {
     width: 100%;
     height: 100%;
-    max-height: 300px; }
+    max-height: 245px; }
   .card_film__title {
     position: absolute;
     opacity: 0;
