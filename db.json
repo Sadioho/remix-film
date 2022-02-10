@@ -1,33 +1,3 @@
 {
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
-    {
-      "name": "asdfasdf",
-      "message": null,
-      "filmId": "6846",
-      "id": 2
-    },
-    {
-      "name": "fgsdfgfas",
-      "message": "dfasdfasdfasdf",
-      "filmId": "6846",
-      "id": 3
-    },
-    {
-      "name": "",
-      "message": "",
-      "filmId": "6846",
-      "id": 4
-    },
-    {
-      "name": "fffff",
-      "message": "fffff",
-      "filmId": "7754",
-      "id": 5
-    }
-  ]
+  "comments": []
 }

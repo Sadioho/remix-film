@@ -1,5 +1,3 @@
-import { getComments } from './comment';
-
 export type Detail = {
   id: string;
   name: string;
@@ -19,8 +17,11 @@ export async function getDetailData(params: number) {
       },
     }
   );
-  const comments = getComments(params);
+  const response2 = await fetch(
+    `http://localhost:3002/comments?filmId=${params}`
+  );
+  const comments = await response2.json();
   const results = await response.json();
 
-  return { comments, results };
+  return { comments: comments, results: results.data };
 }

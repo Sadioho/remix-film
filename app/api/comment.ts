@@ -1,7 +1,9 @@
 export type CommentEntry = {
   name: string;
-  message: string;
+  messenger: string;
   filmId: string;
+  time: string;
+  date:string
 };
 
 export async function getComments(filmId: number) {

@@ -16,6 +16,17 @@ $color-yellow: #febd00;
 
 $color-text: #545454;
 $color-text-dark: #000;
+$GREY: #ccc;
+$BACKGROUND_GREY: lighten(#eeeded, 2.5%);
+$SUBTLE_GREY: #f2f2f2;
+$MURKY_GREY: #384148;
+$DARK_GREY: #333;
+
+$WHITE: #fff;
+$SUBTLE_WHITE: #f9f9f9;
+
+$BLUE: #6495ed;
+$RED: #ff6347;
 // shadow color
 $shadow-white: #fff;
 $shadow-white-hover: #fffd;
@@ -26,6 +37,6 @@ $bg-dark-4: #9993;
 $border-white: #ddd;
 //FONT
 
-$font-family-cookie: "Cookie", cursive;
-$font-family-josefin: "Josefin Sans", sans-serif;
-$font-family-poppins: "Poppins", sans-serif;
+$font-family-cookie: 'Cookie', cursive;
+$font-family-josefin: 'Josefin Sans', sans-serif;
+$font-family-poppins: 'Poppins', sans-serif;
