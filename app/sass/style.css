@@ -1518,7 +1518,8 @@ html {
       .tab_layout .tabfilm__list li {
         border-bottom: solid 1px #fff; }
         .tab_layout .tabfilm__list li.active {
-          background-color: #d0d0d0; }
+          background-color: #d0d0d0;
+          border-bottom: solid 1px #019fb6; }
           .tab_layout .tabfilm__list li.active a {
             color: #000; }
         .tab_layout .tabfilm__list li:hover {

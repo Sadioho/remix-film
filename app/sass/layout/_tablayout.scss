@@ -41,6 +41,7 @@
         border-bottom: solid 1px $color-white;
         &.active {
           background-color: $color-grey-light;
+          border-bottom: solid 1px #019fb6;
           & a {
             color: $color-text-dark;
           }

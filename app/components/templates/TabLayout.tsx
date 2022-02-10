@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Home } from "~/api/home";
 import CardFilm from "../common/CardFilm";
 import imgDefault from "../../image/imagesDefault.jpg";
+import { Film } from "~/api/films";
 
 export default function TabLayout(props: any) {
   const { data } = props;
@@ -10,6 +11,8 @@ export default function TabLayout(props: any) {
   );
   const active = (index: number) => (index === tab ? "active" : "");
   const [tab, setTab] = useState(0);
+  // const randomNumber = (from: number, to: number) =>
+  //   Math.floor(Math.random() * to) + from;
   return (
     <div className="tab_layout container">
       <div className="tabfilm">
@@ -42,6 +45,36 @@ export default function TabLayout(props: any) {
           />
         ))}
       </div>
+      {/* {dataTab.map((item: Home, index) => {
+        // const num = randomNumber(1, 3) + 1;
+        // const textClass = `col-${12 / num}`;
+        // console.log("{dataTab.map ~ textClass", textClass);
+        console.log("{dataTab.map ~ item", item.recommendContentVOList);
+        return (
+          <div key={index} style={{ color: "red" }} className="row">
+            <div className="flex-between-center col-12">
+              <div className="flex-between-center">
+                <h1>{item.homeSectionName}</h1>|
+                <div>Total {item.recommendContentVOList.length} film</div>
+              </div>
+              <div>All movie</div>
+            </div>
+            {item.recommendContentVOList.map(
+              (ele: Film, indexE) =>
+                indexE < 6 && (
+                  <div className="col-2" key={indexE}>
+                    <img
+                      src={ele.imageUrl || imgDefault}
+                      alt="aa"
+                      width="100%"
+                      height="auto"
+                    />
+                  </div>
+                )
+            )}
+          </div>
+        );
+      })} */}
     </div>
   );
 }
