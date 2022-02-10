@@ -3,6 +3,8 @@ import {
   Form,
   LoaderFunction,
   redirect,
+  useActionData,
+  useCatch,
   useLoaderData,
 } from 'remix';
 import { addComment, CommentEntry } from '~/api/comment';
@@ -25,6 +27,19 @@ export const action: ActionFunction = async ({ request }) => {
     time: ` ${time.getHours()}:${time.getMinutes()}`,
     date: `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`,
   };
+  const errors = { name: '', messenger: '' };
+  if (!comment.name) {
+    errors.name = 'Please provide your name';
+  }
+  if (!comment.messenger) {
+    errors.messenger = 'Please provide a comment';
+  }
+
+  if (errors.name || errors.messenger) {
+    const values = Object.fromEntries(body);
+    return { errors: errors, values: values };
+  }
+
   await addComment(comment);
 
   return redirect(`/detail?id=${comment.filmId}`);
@@ -35,7 +50,9 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function Index() {
   const film = useLoaderData();
-  console.log('🚀 ~ Index ~ film', film);
+  const actionData = useActionData();
+  console.log('🚀 ~ Index ~ actionData', actionData)
+ 
   return (
     <div className="container-fluid detail">
       <div className="detail_banner">
@@ -142,7 +159,7 @@ export default function Index() {
         <div className="comment_block">
           <h1>Comments</h1>
           {film.comments.map((item: any) => (
-            <div className="new_comment">
+            <div key={item.time} className="new_comment">
               <ul className="user_comment">
                 <div className="user_avatar">
                   <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png" />
@@ -200,18 +217,61 @@ export default function Index() {
                 name="id"
                 defaultValue={film.results.id}
               />
-              <input type="text" name="name" placeholder="UserName" required />
+              <input type="text" name="name" placeholder="UserName"  />
               <textarea
                 name="messenger"
                 placeholder="Messenger"
-                required
+                
               ></textarea>
               <button type="submit">Submit</button>
             </div>
           </Form>
-          {/* end fỏm */}{' '}
+          {/* end fỏm */}
         </div>
       </div>
+    </div>
+  );
+}
+export function CatchBoundary() {
+  const caught = useCatch();
+  if (caught.status === 404) {
+    return (
+      <div
+        className="error"
+        style={{
+          padding: '2rem',
+          background: 'red',
+          color: 'white',
+          textAlign: 'center',
+        }}
+      >
+        <h2>{caught.statusText}</h2>
+        <p>
+          {caught.status} {caught.statusText}
+        </p>
+      </div>
+    );
+  }
+  throw new Error('Unkwn error');
+}
+
+export function ErrorBoundary({ error }: any) {
+  return (
+    <div
+      className="error"
+      style={{
+        padding: '2rem',
+        background: 'red',
+        color: 'white',
+        textAlign: 'center',
+      }}
+    >
+      <h2>Detail</h2>
+      <h3>
+        Rất lấy làm tiếc là có một số lỗi đã xảy ra xin vui lòng thử tải lại
+        trang
+      </h3>
+      <p>{error?.message}</p>
     </div>
   );
 }
