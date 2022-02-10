@@ -1,18 +1,18 @@
-import type { LinksFunction, MetaFunction } from "remix";
-import { Links, LiveReload, Meta, Scripts, ScrollRestoration } from "remix";
-import MainLayout from "./components/templates/MainLayout";
-import styles from "./sass/style.css";
+import type { LinksFunction, MetaFunction } from 'remix';
+import { Links, LiveReload, Meta, Scripts, ScrollRestoration } from 'remix';
+import MainLayout from './components/templates/MainLayout';
+import styles from './sass/style.css';
 
 const fontAwesome =
-  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css";
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: fontAwesome },
-    { rel: "stylesheet", href: styles },
+    { rel: 'stylesheet', href: fontAwesome },
+    { rel: 'stylesheet', href: styles },
   ];
 };
 export const meta: MetaFunction = () => {
-  return { title: "Remix Film" };
+  return { title: 'Remix Film' };
 };
 
 export default function App() {
@@ -28,7 +28,7 @@ export default function App() {
         <MainLayout />
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+        {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
   );
