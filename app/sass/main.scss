@@ -1,23 +1,23 @@
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/variables';
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-@import 'base/animations';
-@import 'base/base';
-@import 'base/typography';
-@import 'base/utilities';
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
 
-@import 'components/btn';
+@import "components/btn";
 
-@import 'layout/body';
-@import 'layout/grid';
-@import 'layout/header';
-@import 'layout/navigation';
-@import 'layout/footer';
+@import "layout/body";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/tablayout";
+@import "layout/footer";
 
-@import 'pages/home';
-@import 'pages/carousel';
-@import 'pages/home';
-@import 'pages/tablayout';
-@import 'pages/cardfilm';
-@import 'pages/detail';
+@import "pages/home";
+@import "pages/carousel";
+@import "pages/home";
+@import "pages/cardfilm";
+@import "pages/detail";
