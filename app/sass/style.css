@@ -1519,7 +1519,7 @@ html {
         border-bottom: solid 1px #fff; }
         .tab_layout .tabfilm__list li.active {
           background-color: #d0d0d0;
-          border-bottom: solid 1px #019fb6; }
+          border-bottom: solid 1px #7575f3; }
           .tab_layout .tabfilm__list li.active a {
             color: #000; }
         .tab_layout .tabfilm__list li:hover {
@@ -1529,7 +1529,7 @@ html {
         .tab_layout .tabfilm__list li:after {
           display: block;
           content: "";
-          border-bottom: solid 3px #019fb6;
+          border-bottom: solid 3px #7575f3;
           transform: scaleX(0);
           transition: transform 0.5s ease-in-out;
           transform-origin: 0% 50%; }

@@ -35,7 +35,7 @@ export default function TabLayout(props: any) {
           </ul>
         </div>
       </div>
-      <div className="row">
+      {/* <div className="row">
         {dataTab[tab].recommendContentVOList.map((item: any) => (
           <CardFilm
             key={item.id}
@@ -44,8 +44,8 @@ export default function TabLayout(props: any) {
             id={item.id}
           />
         ))}
-      </div>
-      {/* {dataTab.map((item: Home, index) => {
+      </div> */}
+      {dataTab.map((item: Home, index) => {
         // const num = randomNumber(1, 3) + 1;
         // const textClass = `col-${12 / num}`;
         // console.log("{dataTab.map ~ textClass", textClass);
@@ -74,7 +74,7 @@ export default function TabLayout(props: any) {
             )}
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 }

@@ -41,7 +41,7 @@
         border-bottom: solid 1px $color-white;
         &.active {
           background-color: $color-grey-light;
-          border-bottom: solid 1px #019fb6;
+          border-bottom: solid 1px $color-purple;
           & a {
             color: $color-text-dark;
           }
@@ -55,7 +55,7 @@
         &:after {
           display: block;
           content: "";
-          border-bottom: solid 3px #019fb6;
+          border-bottom: solid 3px $color-purple;
           transform: scaleX(0);
           transition: transform 0.5s ease-in-out;
           transform-origin: 0% 50%;
