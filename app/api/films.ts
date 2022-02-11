@@ -7,7 +7,7 @@ export type Film = {
 };
 
 export type DetailFilm = {
-  id:string,
-  introduction:string,
+  id: string;
+  introduction: string;
   title: string;
 };

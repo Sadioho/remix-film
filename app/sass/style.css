@@ -2025,3 +2025,13 @@ footer {
 @media (min-width: 568px) {
   .form form {
     width: 60%; } }
+
+.error-box {
+  padding: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  background-color: #ee6969;
+  margin: auto;
+  width: 30%;
+  border-radius: 1rem; }

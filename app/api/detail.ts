@@ -5,7 +5,7 @@ export type Detail = {
   likeList: [];
 };
 
-export async function getDetailData(params: number) {
+export async function getDetailData(params: string) {
   const response = await fetch(
     `https://ga-mobile-api.loklok.tv/cms/app/movieDrama/get?id=${params}&category=1`,
     {
