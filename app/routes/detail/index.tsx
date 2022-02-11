@@ -6,13 +6,13 @@ import {
   useActionData,
   useCatch,
   useLoaderData,
-} from 'remix';
-import { addComment, CommentEntry } from '~/api/comment';
-import { getDetailData } from '~/api/detail';
+} from "remix";
+import { addComment, CommentEntry } from "~/api/comment";
+import { getDetailData } from "~/api/detail";
 
 export const loader: LoaderFunction = async ({ request }) => {
   let url = new URL(request.url);
-  let filmID: string | null = url.searchParams.get('id');
+  let filmID: string | null = url.searchParams.get("id");
   let id: number = Number(filmID);
   return getDetailData(id);
 };
@@ -21,18 +21,18 @@ export const action: ActionFunction = async ({ request }) => {
   const timeNow = Date.now();
   const time = new Date(timeNow);
   const comment: CommentEntry = {
-    name: body.get('name') as string,
-    messenger: body.get('messenger') as string,
-    filmId: body.get('id') as string,
+    name: body.get("name") as string,
+    messenger: body.get("messenger") as string,
+    filmId: body.get("id") as string,
     time: ` ${time.getHours()}:${time.getMinutes()}`,
     date: `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`,
   };
-  const errors = { name: '', messenger: '' };
+  const errors = { name: "", messenger: "" };
   if (!comment.name) {
-    errors.name = 'Please provide your name';
+    errors.name = "Please provide your name";
   }
   if (!comment.messenger) {
-    errors.messenger = 'Please provide a comment';
+    errors.messenger = "Please provide a comment";
   }
 
   if (errors.name || errors.messenger) {
@@ -51,8 +51,8 @@ export const action: ActionFunction = async ({ request }) => {
 export default function Index() {
   const film = useLoaderData();
   const actionData = useActionData();
-  console.log('🚀 ~ Index ~ actionData', actionData)
- 
+  console.log("🚀 ~ Index ~ actionData", actionData);
+
   return (
     <div className="container-fluid detail">
       <div className="detail_banner">
@@ -180,7 +180,7 @@ export default function Index() {
                         <i className="fa fa-calendar"></i> {item.date}
                       </li>
                       <li>
-                        <i className="fa fa-pencil"></i>{' '}
+                        <i className="fa fa-pencil"></i>{" "}
                         <span className="user">{item.name}</span>
                       </li>
                     </ul>
@@ -212,17 +212,13 @@ export default function Index() {
             <div className="circle"></div>
             <div className="form-inner">
               <input
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
                 type="text"
                 name="id"
                 defaultValue={film.results.id}
               />
-              <input type="text" name="name" placeholder="UserName"  />
-              <textarea
-                name="messenger"
-                placeholder="Messenger"
-                
-              ></textarea>
+              <input type="text" name="name" placeholder="UserName" />
+              <textarea name="messenger" placeholder="Messenger"></textarea>
               <button type="submit">Submit</button>
             </div>
           </Form>
@@ -239,10 +235,10 @@ export function CatchBoundary() {
       <div
         className="error"
         style={{
-          padding: '2rem',
-          background: 'red',
-          color: 'white',
-          textAlign: 'center',
+          padding: "2rem",
+          background: "red",
+          color: "white",
+          textAlign: "center",
         }}
       >
         <h2>{caught.statusText}</h2>
@@ -252,7 +248,7 @@ export function CatchBoundary() {
       </div>
     );
   }
-  throw new Error('Unkwn error');
+  throw new Error("Unkwn error");
 }
 
 export function ErrorBoundary({ error }: any) {
@@ -260,10 +256,10 @@ export function ErrorBoundary({ error }: any) {
     <div
       className="error"
       style={{
-        padding: '2rem',
-        background: 'red',
-        color: 'white',
-        textAlign: 'center',
+        padding: "2rem",
+        background: "red",
+        color: "white",
+        textAlign: "center",
       }}
     >
       <h2>Detail</h2>
