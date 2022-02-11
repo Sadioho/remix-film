@@ -1,8 +1,10 @@
+import { Film } from "./films";
+
 export type Home = {
   homeSectionId: number;
   homeSectionName: string;
   homeSectionType: string;
-  recommendContentVOList: object[];
+  recommendContentVOList: Film[];
   refId: number;
 };
 

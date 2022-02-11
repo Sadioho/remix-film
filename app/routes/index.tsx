@@ -13,7 +13,7 @@ export default function Index() {
     <>
       <Banner data={dataHome[0]} />
       <TabLayout data={dataHome} />
-      <ul className="pagination">
+      {/* <ul className="pagination">
         <li>
           <Link className="" to="#">
             «
@@ -33,7 +33,7 @@ export default function Index() {
         <li>
           <Link to="#">»</Link>
         </li>
-      </ul>
+      </ul> */}
     </>
   );
 }
