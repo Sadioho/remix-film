@@ -5,6 +5,13 @@ export type Detail = {
   likeList: [];
 };
 
+export type DetailV2 = {
+  id?: string;
+  name?: string;
+  introduction?: string;
+  coverHorizontalUrl?:string,
+  coverVerticalUrl?:string,
+};
 export async function getDetailData(params: string) {
   const response = await fetch(
     `https://ga-mobile-api.loklok.tv/cms/app/movieDrama/get?id=${params}&category=1`,

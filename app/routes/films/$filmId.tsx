@@ -48,9 +48,12 @@ export const action: ActionFunction = async ({ request }) => {
   return redirect(`/films/${comment.filmId}`);
 };
 
-export const meta: MetaFunction = ({ data }) => {
-  return { title: data.results.name, description: data.results.introduction };
-};
+// export const meta: MetaFunction = ({ data }) => {
+//   return {
+//     title: data.results.name ? data.results.name : 'Remix Film Detail',
+//     description: data.results.introduction,
+//   };
+// };
 export default function Detail() {
   const film = useLoaderData();
   return (
@@ -74,7 +77,9 @@ export default function Detail() {
                   <p>SHOWN IN 35MM</p>
                 </div>
               </div>
-              <div className="contents_content__title">{film.results.name}</div>
+              <div className="contents_content__title">
+                {film.results.name && film.results.name}
+              </div>
               <div className="container contents_content__description ">
                 <p className="description_first mt-5 mb-5">
                   {film.results.introduction}
@@ -110,13 +115,15 @@ export default function Detail() {
             </div>
           </div>
           <div className="col-3 contents_category">
-            <button className="btn">GET TICKETS</button>
-            <div className="contents_category__hour">
-              <p className="text1">Showtimes</p>
-              <p className="text2">Monday, January 15</p>
-              <p className="text2">{film.results.name}</p>
-              <span className="text2 time-first">1:00 pm</span>
-              <span className="text2 time-second">4:00 pm</span>
+            <div className='widget'>
+              <button className="btn">GET TICKETS</button>
+              <div className="contents_category__hour">
+                <p className="text1">Showtimes</p>
+                <p className="text2">Monday, January 15</p>
+                <p className="text2">{film.results.name}</p>
+                <span className="text2 time-first">1:00 pm</span>
+                <span className="text2 time-second">4:00 pm</span>
+              </div>
             </div>
           </div>
         </div>

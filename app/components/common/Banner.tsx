@@ -13,7 +13,7 @@ export default function Banner(props: any) {
 
   const films = data.recommendContentVOList;
 
-  console.log('🚀 ~ Banner ~ films', films);
+  // console.log('🚀 ~ Banner ~ films', films);
   const refDrag = useRef<HTMLDivElement>(null);
   const refSpin = useRef<HTMLDivElement>(null);
   const refGround = useRef<HTMLDivElement>(null);
@@ -135,6 +135,13 @@ export default function Banner(props: any) {
 
     //   init(1);
     // };
+
+    return () => {
+      document.onpointermove =
+        document.onpointerup =
+        document.onpointerdown =
+          null;
+    };
   }, []);
 
   return (

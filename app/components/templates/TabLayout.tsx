@@ -5,6 +5,11 @@ import imgDefault from '../../image/imagesDefault.jpg';
 import { Film } from '~/api/films';
 import { Link } from 'remix';
 
+
+
+
+
+
 export default function TabLayout(props: any) {
   const { data } = props;
   const dataTab: Home[] = data.filter(
@@ -52,13 +57,27 @@ export default function TabLayout(props: any) {
         // console.log("{dataTab.map ~ textClass", textClass);
         // console.log('{dataTab.map ~ item', item.recommendContentVOList);
         return (
-          <div key={index} style={{ color: 'red' }} className="row">
+          <div
+            key={index}
+            style={{ color: 'rgb(117, 117, 243)' }}
+            className="row m-5"
+          >
             <div className="flex-between-center col-12">
               <div className="flex-between-center">
                 <h1>{item.homeSectionName}</h1>|
                 <div>Total {item.recommendContentVOList.length} film</div>
               </div>
-              <Link to={`/allmovie/${item.homeSectionId}`}>All movie</Link>
+              <Link
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                }}
+                to={`/allmovie/${item.homeSectionId}`}
+              >
+                All movie
+              </Link>
             </div>
             {item.recommendContentVOList.map(
               (ele: Film, indexE) =>
