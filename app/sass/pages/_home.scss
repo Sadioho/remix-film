@@ -5,6 +5,9 @@
 //   font-family: "Roboto Slab", serif;
 //   font-size: 1.6rem;
 // }
+html {
+  scroll-behavior: smooth;
+}
 .main {
   font-size: 1.6rem;
   background-color: black;

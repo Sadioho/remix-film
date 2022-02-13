@@ -39,7 +39,7 @@
       transform: perspective(1000px) rotateY(90deg) translateY(-50%);
       & li {
         border-bottom: solid 1px $color-white;
-        &.active {
+        &.active-cat {
           background-color: $color-grey-light;
           border-bottom: solid 1px $color-purple;
           & a {

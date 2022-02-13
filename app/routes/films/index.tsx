@@ -1,7 +1,7 @@
-import { Link, LoaderFunction, useLoaderData } from 'remix';
-import { getHomeData } from '~/api/home';
-import Banner from '~/components/common/Banner';
-import TabLayout from '~/components/templates/TabLayout';
+import { Link, LoaderFunction, useLoaderData } from "remix";
+import { getHomeData } from "~/api/home";
+import Banner from "~/components/common/Banner";
+import TabLayout from "~/components/templates/TabLayout";
 
 export const loader: LoaderFunction = async () => {
   return getHomeData();
