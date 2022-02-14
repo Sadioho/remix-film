@@ -1,4 +1,4 @@
-import { LoaderFunction, useCatch, useLoaderData } from 'remix';
+import { LoaderFunction, useCatch, useLoaderData } from "remix";
 
 export let loader: LoaderFunction = async () => {
   // const response = await fetch(`http://localhost:3002/comments`);
@@ -14,7 +14,7 @@ export default function Character() {
 
 export function CatchBoundary() {
   const caught = useCatch();
-  console.log('🚀 ~ CatchBoundary ~ caught', caught);
+  console.log("🚀 ~ CatchBoundary ~ caught", caught);
 
   if (caught.status === 404) {
     return (
@@ -28,7 +28,7 @@ export function CatchBoundary() {
     );
   }
 
-  throw new Error('Unkown error');
+  throw new Error("Unkown error");
 }
 
 export function ErrorBoundary({ error }: any) {
