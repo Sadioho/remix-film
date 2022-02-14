@@ -1,10 +1,10 @@
-import { useCallback, useRef, useState } from 'react';
-import { ActionFunction, Form, Link, LoaderFunction, redirect } from 'remix';
+import { useCallback, useRef, useState } from "react";
+import { ActionFunction, Form, Link, LoaderFunction, redirect } from "remix";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
-  const title = url.searchParams.get('keyword');
-  console.log('🚀 ~ constloader:LoaderFunction= ~ title', title);
+  const title = url.searchParams.get("keyword");
+  console.log("🚀 ~ constloader:LoaderFunction= ~ title", title);
   // return getDetailData(film);
   return null;
 };
@@ -18,7 +18,7 @@ export default function Header() {
   };
   return (
     <nav className="nav sticky flex-between-center">
-      <Link to="/" className="logo">
+      <Link to="/films" className="logo">
         REMIX.Movie
       </Link>
       <form
