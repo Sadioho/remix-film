@@ -3,16 +3,31 @@ import { getHomeData } from "~/api/home";
 import Banner from "~/components/common/Banner";
 import TabLayout from "~/components/templates/TabLayout";
 
-export const loader: LoaderFunction = async () => {
-  return getHomeData();
+export const loader: LoaderFunction = async ({ request }) => {
+  const url = new URL(request.url);
+  const keyword = url.searchParams.get("keyword");
+  return getHomeData(keyword);
 };
 export default function Index() {
   const data = useLoaderData();
-  const dataHome = data.home;
+  const { home: dataHome, dataSearch, keyword } = data;
+  console.log("Index ~ keyword", keyword);
+  console.log("Index ~ search", dataSearch);
+
   return (
     <>
-      <Banner data={dataHome[0]} />
-      <TabLayout data={dataHome} />
+      {dataHome ? (
+        <>
+          <Banner data={dataHome[0]} />
+          <TabLayout data={dataHome} />
+        </>
+      ) : (
+        <p style={{ color: "white" }}>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus
+          error dolorum aliquid expedita, totam iusto blanditiis suscipit
+          molestias? Vero molestiae hic quisquam quidem. Dolores, voluptas!
+        </p>
+      )}
 
       {/* <ul className="pagination">
         <li>
