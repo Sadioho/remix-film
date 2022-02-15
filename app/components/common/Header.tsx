@@ -21,10 +21,10 @@ export default function Header() {
       <Link to="/films" className="logo">
         REMIX.Movie
       </Link>
-      <form
-        method="post"
+      <Form
+        method="get"
         className="nav_search flex-between-center"
-        action={`/films?keyword=${keyword}`}
+        action={`/films`}
       >
         <input
           ref={inputRef}
@@ -38,7 +38,7 @@ export default function Header() {
         <button type="submit" className="nav_search__btn py-2 px-3">
           Search
         </button>
-      </form>
+      </Form>
       <ul className="nav_menu flex-between-center">
         <li>
           <Link to="/about">About</Link>
