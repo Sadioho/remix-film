@@ -2,37 +2,40 @@ import {
   ActionFunction,
   Form,
   LoaderFunction,
+  MetaFunction,
+  Outlet,
   redirect,
   useActionData,
   useCatch,
   useLoaderData,
-} from "remix";
-import { addComment, CommentEntry } from "~/api/comment";
-import { getDetailData } from "~/api/detail";
+  useParams,
+} from 'remix';
+import { addComment, CommentEntry } from '~/api/comment';
+import { getDetailData } from '~/api/detail';
+import CommentsList from '~/components/common/CommentList';
 
-export const loader: LoaderFunction = async ({ request }) => {
-  let url = new URL(request.url);
-  let filmID: string | null = url.searchParams.get("id");
-  let id: number = Number(filmID);
-  return getDetailData(id);
+export const loader: LoaderFunction = async ({ params }) => {
+  const film: any = params.filmId;
+  return getDetailData(film);
 };
+// action submit form
 export const action: ActionFunction = async ({ request }) => {
   const body = await request.formData();
   const timeNow = Date.now();
   const time = new Date(timeNow);
   const comment: CommentEntry = {
-    name: body.get("name") as string,
-    messenger: body.get("messenger") as string,
-    filmId: body.get("id") as string,
+    name: body.get('name') as string,
+    messenger: body.get('messenger') as string,
+    filmId: body.get('id') as string,
     time: ` ${time.getHours()}:${time.getMinutes()}`,
     date: `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`,
   };
-  const errors = { name: "", messenger: "" };
+  const errors = { name: '', messenger: '' };
   if (!comment.name) {
-    errors.name = "Please provide your name";
+    errors.name = 'Làm ơn không được để trống tên 😖😖😖!!!';
   }
   if (!comment.messenger) {
-    errors.messenger = "Please provide a comment";
+    errors.messenger = 'Làm ơn không được để trống nội dung 😖😖😖!!!';
   }
 
   if (errors.name || errors.messenger) {
@@ -42,17 +45,17 @@ export const action: ActionFunction = async ({ request }) => {
 
   await addComment(comment);
 
-  return redirect(`/detail?id=${comment.filmId}`);
+  return redirect(`/films/${comment.filmId}`);
 };
+
 // export const meta: MetaFunction = ({ data }) => {
-//   return { title: data.data.name, description: data.data.introduction };
+//   return {
+//     title: data.results.name ? data.results.name : 'Remix Film Detail',
+//     description: data.results.introduction,
+//   };
 // };
-
-export default function Index() {
+export default function Detail() {
   const film = useLoaderData();
-  const actionData = useActionData();
-  console.log("🚀 ~ Index ~ actionData", actionData);
-
   return (
     <div className="container-fluid detail">
       <div className="detail_banner">
@@ -74,7 +77,9 @@ export default function Index() {
                   <p>SHOWN IN 35MM</p>
                 </div>
               </div>
-              <div className="contents_content__title">{film.results.name}</div>
+              <div className="contents_content__title">
+                {film.results.name && film.results.name}
+              </div>
               <div className="container contents_content__description ">
                 <p className="description_first mt-5 mb-5">
                   {film.results.introduction}
@@ -110,13 +115,15 @@ export default function Index() {
             </div>
           </div>
           <div className="col-3 contents_category">
-            <button className="btn">GET TICKETS</button>
-            <div className="contents_category__hour">
-              <p className="text1">Showtimes</p>
-              <p className="text2">Monday, January 15</p>
-              <p className="text2">{film.results.name}</p>
-              <span className="text2 time-first">1:00 pm</span>
-              <span className="text2 time-second">4:00 pm</span>
+            <div className='widget'>
+              <button className="btn">GET TICKETS</button>
+              <div className="contents_category__hour">
+                <p className="text1">Showtimes</p>
+                <p className="text2">Monday, January 15</p>
+                <p className="text2">{film.results.name}</p>
+                <span className="text2 time-first">1:00 pm</span>
+                <span className="text2 time-second">4:00 pm</span>
+              </div>
             </div>
           </div>
         </div>
@@ -155,100 +162,12 @@ export default function Index() {
             </div>
           </div>
         </div>
-
-        <div className="comment_block">
-          <h1>Comments</h1>
-          {film.comments.map((item: any) => (
-            <div key={item.time} className="new_comment">
-              <ul className="user_comment">
-                <div className="user_avatar">
-                  <img src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png" />
-                </div>
-                <div className="comment_body">
-                  <p>
-                    <span className="replied_to">{item.name} : </span>
-                    {item.messenger}
-                  </p>
-                </div>
-                <div className="comment_toolbar">
-                  <div className="comment_details">
-                    <ul>
-                      <li>
-                        <i className="fa fa-clock-o"></i> {item.time}
-                      </li>
-                      <li>
-                        <i className="fa fa-calendar"></i> {item.date}
-                      </li>
-                      <li>
-                        <i className="fa fa-pencil"></i>{" "}
-                        <span className="user">{item.name}</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="comment_tools">
-                    <ul>
-                      <li>
-                        <i className="fa fa-share-alt"></i>
-                      </li>
-                      <li>
-                        <i className="fa fa-reply"></i>
-                      </li>
-                      <li>
-                        <i className="fa fa-heart love"></i>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="form">
-          {/* fỏm */}
-          <Form method="post" className="decor">
-            <div className="form-left-decoration"></div>
-            <div className="form-right-decoration"></div>
-            <div className="circle"></div>
-            <div className="form-inner">
-              <input
-                style={{ display: "none" }}
-                type="text"
-                name="id"
-                defaultValue={film.results.id}
-              />
-              <input type="text" name="name" placeholder="UserName" />
-              <textarea name="messenger" placeholder="Messenger"></textarea>
-              <button type="submit">Submit</button>
-            </div>
-          </Form>
-          {/* end fỏm */}
-        </div>
+        {/* sử dụng outlet để sử dụng layout đang có  */}
+        <Outlet />
+        <CommentsList filmId={film.results.id} comments={film.comments} />
       </div>
     </div>
   );
-}
-export function CatchBoundary() {
-  const caught = useCatch();
-  if (caught.status === 404) {
-    return (
-      <div
-        className="error"
-        style={{
-          padding: "2rem",
-          background: "red",
-          color: "white",
-          textAlign: "center",
-        }}
-      >
-        <h2>{caught.statusText}</h2>
-        <p>
-          {caught.status} {caught.statusText}
-        </p>
-      </div>
-    );
-  }
-  throw new Error("Unkwn error");
 }
 
 export function ErrorBoundary({ error }: any) {
@@ -256,17 +175,14 @@ export function ErrorBoundary({ error }: any) {
     <div
       className="error"
       style={{
-        padding: "2rem",
-        background: "red",
-        color: "white",
-        textAlign: "center",
+        padding: '2rem',
+        background: '#e57373',
+        color: 'white',
+        textAlign: 'center',
+        height: '90vh',
       }}
     >
-      <h2>Detail</h2>
-      <h3>
-        Rất lấy làm tiếc là có một số lỗi đã xảy ra xin vui lòng thử tải lại
-        trang
-      </h3>
+      <h3>Rất lấy làm tiếc là có một số lỗi đã xảy ra 👻👻👻👻 </h3>
       <p>{error?.message}</p>
     </div>
   );

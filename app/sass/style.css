@@ -1460,7 +1460,7 @@ html {
     margin-left: auto !important; } }
 
 .nav {
-  background-color: #636465;
+  background-color: #252525;
   padding: 1rem 1.6rem;
   color: #fff; }
   .nav .logo {
@@ -1517,10 +1517,10 @@ html {
       transform: perspective(1000px) rotateY(90deg) translateY(-50%); }
       .tab_layout .tabfilm__list li {
         border-bottom: solid 1px #fff; }
-        .tab_layout .tabfilm__list li.active {
+        .tab_layout .tabfilm__list li.active-cat {
           background-color: #d0d0d0;
           border-bottom: solid 1px #7575f3; }
-          .tab_layout .tabfilm__list li.active a {
+          .tab_layout .tabfilm__list li.active-cat a {
             color: #000; }
         .tab_layout .tabfilm__list li:hover {
           background-color: #d0d0d0; }
@@ -1568,6 +1568,9 @@ footer {
           margin-right: 1rem; }
           footer .footer .widget .icons .icon .fab {
             font-size: 3rem; }
+
+html {
+  scroll-behavior: smooth; }
 
 .main {
   font-size: 1.6rem;
@@ -1686,6 +1689,9 @@ footer {
   to {
     transform: rotateY(0deg); } }
 
+html {
+  scroll-behavior: smooth; }
+
 .main {
   font-size: 1.6rem;
   background-color: black; }
@@ -1786,12 +1792,14 @@ footer {
       border-radius: 2rem;
       background-color: rgba(0, 0, 0, 0.37); }
     .detail .contents_category {
-      background-color: rgba(0, 0, 0, 0.37);
-      border-radius: 2rem;
-      padding: 15rem 0;
       margin-top: 5rem;
+      padding: 3rem;
       width: 100%;
       text-align: center; }
+      .detail .contents_category .widget {
+        border-radius: 2rem;
+        background-color: rgba(0, 0, 0, 0.37);
+        padding: 3rem 0; }
       .detail .contents_category .btn {
         font-size: 1.6rem;
         padding: 1rem 3rem;
@@ -2025,3 +2033,40 @@ footer {
 @media (min-width: 568px) {
   .form form {
     width: 60%; } }
+
+.error-box {
+  padding: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  background-color: #ee6969;
+  margin: auto;
+  width: 30%;
+  border-radius: 1rem; }
+
+.banner_detail {
+  width: 100%;
+  position: relative; }
+
+.banner_img {
+  width: 100%; }
+
+.banner_content {
+  background-color: rgba(0, 0, 0, 0.431);
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  width: 70%; }
+  .banner_content .title {
+    font-size: 7rem;
+    font-weight: bold;
+    color: white; }
+  .banner_content .description {
+    color: white; }
+  .banner_content .banner-right {
+    text-align: right; }
+    .banner_content .banner-right .img {
+      width: 50%; }

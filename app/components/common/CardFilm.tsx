@@ -24,9 +24,10 @@ export default function CardFilm(props: any) {
   }, [src]);
   return (
     <Link
-      to={`/detail?id=${props.id}`}
+      to={`${props.id}`}
       title={props.title}
       className="col-2 p-3"
+      prefetch="intent"
     >
       <div className="card_film">
         <img
