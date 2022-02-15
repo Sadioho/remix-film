@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
-import { Link } from "remix";
-import imgDefault from "../../image/imagesDefault.jpg";
+import { useEffect, useRef } from 'react';
+import { Link } from 'remix';
+import imgDefault from '../../image/imagesDefault.jpg';
 export default function CardFilm(props: any) {
   const { src } = props;
   const refImage = useRef<HTMLImageElement>(null);
@@ -24,7 +24,7 @@ export default function CardFilm(props: any) {
   }, [src]);
   return (
     <Link
-      to={`${props.id}`}
+      to={props.allFilm ? `/films/${props.id}` : `${props.id}`}
       title={props.title}
       className="col-2 p-3"
       prefetch="intent"
@@ -33,7 +33,7 @@ export default function CardFilm(props: any) {
         <img
           ref={refImage}
           className="card_film__image"
-          alt={props.title || "image film"}
+          alt={props.title || 'image film'}
         />
         <div className="card_film__title">{props.title}</div>
       </div>

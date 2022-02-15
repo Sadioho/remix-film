@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, LoaderFunction, useLoaderData, useParams } from 'remix';
 import { Detail, DetailV2 } from '~/api/detail';
+import CardFilm from '../../components/common/CardFilm';
 import { Film } from '~/api/films';
 import { getHomeData, Home } from '~/api/home';
 import imgDefault from '../../image/imagesDefault.jpg';
@@ -79,22 +80,14 @@ export default function movie() {
               </div>
             </div>
             <div className="row">
-              {item.recommendContentVOList.map((ele: Film, indexE) => (
-                <div className="col-2 mt-4">
-                  <Link
-                    to={`/films/${ele.id}`}
-                    title={ele.title}
-                    key={indexE}
-                    prefetch="intent"
-                  >
-                    <img
-                      src={ele.imageUrl || imgDefault}
-                      alt="aa"
-                      width="100%"
-                      height="auto"
-                    />
-                  </Link>
-                </div>
+              {item.recommendContentVOList.map((ele: Film) => (
+                <CardFilm
+                  key={ele.id}
+                  src={ele.imageUrl || imgDefault}
+                  title={ele.title}
+                  id={ele.id}
+                  allFilm
+                />
               ))}
             </div>
           </div>

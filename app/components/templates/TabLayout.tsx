@@ -12,30 +12,6 @@ export default function TabLayout(props: any) {
   );
   const [tab, setTab] = useState(0);
   const active = (index: number) => (index === tab ? "active-cat" : "");
-  // const activeElement = (data: any) => {
-  //   if (document.querySelectorAll(".active-cat").length > 0) {
-  //     document.querySelector(".active-cat").classList.remove("active-cat");
-  //   }
-  //   document.getElementById("cate" + data).classList.add("active-cat");
-  // };
-  // const windowScroll = () => {
-  //   const NodeList = document.querySelectorAll(".section-name-film");
-  //   const yWindow = window.scrollY + 50; // "+50" vì set height khi chia layout
-  //   NodeList.forEach((e) =>
-  //     document.getElementById(e.id).offsetTop <= yWindow &&
-  //     yWindow <=
-  //       document.getElementById(e.id).offsetTop +
-  //         document.getElementById(e.id).offsetHeight
-  //       ? activeElement(e.id)
-  //       : null
-  //   );
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", windowScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", windowScroll);
-  //   };
-  // }, []);
   return (
     <div className="tab_layout container">
       <div className="tabfilm">
@@ -44,7 +20,7 @@ export default function TabLayout(props: any) {
         </div>
         <div className="tabfilm__list">
           <ul>
-            {dataTab.map((item: Home, index: number) => (
+            {/* {dataTab.map((item: Home, index: number) => (
               <li className={active(index)} key={item.homeSectionId}>
                 <Link
                   to={`/films#section${item.homeSectionId}`}
@@ -55,7 +31,7 @@ export default function TabLayout(props: any) {
                   {item.homeSectionName}
                 </Link>
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>
