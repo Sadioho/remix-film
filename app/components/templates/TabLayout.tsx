@@ -20,7 +20,7 @@ export default function TabLayout(props: any) {
         </div>
         <div className="tabfilm__list">
           <ul>
-            {/* {dataTab.map((item: Home, index: number) => (
+            {dataTab.map((item: Home, index: number) => (
               <li className={active(index)} key={item.homeSectionId}>
                 <Link
                   to={`/films#section${item.homeSectionId}`}
@@ -31,33 +31,26 @@ export default function TabLayout(props: any) {
                   {item.homeSectionName}
                 </Link>
               </li>
-            ))} */}
+            ))}
           </ul>
         </div>
       </div>
       {dataTab.map((item: Home, index) => {
         return (
-          <div
-            key={index}
-            style={{ color: "rgb(117, 117, 243)" }}
-            className="row section-name-film"
-            id={`section${item.homeSectionId}`}
-          >
-            <div className="flex-between-center col-12 my-3">
+          <div key={index} className="row" id={`section${item.homeSectionId}`}>
+            <div className="flex-between-center col-12 my-3 title_tab">
               <div className="flex-between-center">
-                <h1>{item.homeSectionName}</h1>|
-                <div>Total {item.recommendContentVOList.length} film</div>
+                <h1 className="title_tab__name">{item.homeSectionName}</h1>
+                <span className="title_tab__space mx-4">|</span>
+                <div className="title_tab__total">
+                  Total {item.recommendContentVOList.length} movies
+                </div>
               </div>
               <Link
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                }}
+                className="title_tab__allmovie"
                 to={`/allmovie/${item.homeSectionId}`}
               >
-                All movie
+                All movies
               </Link>
             </div>
             {item.recommendContentVOList.map(

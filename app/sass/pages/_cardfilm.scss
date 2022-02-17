@@ -2,6 +2,11 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 0 0 16px $shadow-white;
+  }
   &:hover .card_film__title {
     opacity: 1;
   }
