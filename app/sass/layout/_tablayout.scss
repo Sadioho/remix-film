@@ -81,4 +81,24 @@
       }
     }
   }
+  .title_tab {
+    &__name {
+      font-size: 2.4rem;
+      color: $color-text-white;
+    }
+    &__space {
+      font-size: 2.4rem;
+      color: $color-text-white;
+    }
+    &__total {
+      color: $color-grey-light-1;
+    }
+    &__allmovie {
+      color: $color-grey-light-1;
+      text-decoration: none;
+      &:hover {
+        color: rgb(117, 117, 243);
+      }
+    }
+  }
 }

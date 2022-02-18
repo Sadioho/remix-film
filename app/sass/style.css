@@ -1548,6 +1548,19 @@ html {
         .tab_layout .tabfilm__list a:hover {
           transform: translateX(-14px);
           color: #000; }
+  .tab_layout .title_tab__name {
+    font-size: 2.4rem;
+    color: #fff; }
+  .tab_layout .title_tab__space {
+    font-size: 2.4rem;
+    color: #fff; }
+  .tab_layout .title_tab__total {
+    color: #b7b7b7; }
+  .tab_layout .title_tab__allmovie {
+    color: #b7b7b7;
+    text-decoration: none; }
+    .tab_layout .title_tab__allmovie:hover {
+      color: #7575f3; }
 
 footer {
   background-color: black; }
@@ -1731,7 +1744,11 @@ html {
 .card_film {
   position: relative;
   overflow: hidden;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out; }
+  .card_film:hover {
+    box-shadow: 0 0 16px #7575f3; }
   .card_film:hover .card_film__title {
     opacity: 1; }
   .card_film__image {
