@@ -1748,7 +1748,7 @@ html {
   border-radius: 8px;
   transition: all 0.3s ease-in-out; }
   .card_film:hover {
-    box-shadow: 0 0 16px #7575f3; }
+    box-shadow: 0 0 16px #fff; }
   .card_film:hover .card_film__title {
     opacity: 1; }
   .card_film__image {
