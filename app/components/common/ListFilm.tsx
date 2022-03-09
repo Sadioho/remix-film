@@ -1,17 +1,17 @@
-import { Link } from 'remix';
-import imgDefault from '../../image/imagesDefault.jpg';
-import CardFilm from '../common/CardFilm';
+import imgDefault from "../../image/imagesDefault.jpg";
+import CardFilm from "../common/CardFilm";
 
 export default function ListFilm(props: any) {
-  const { data } = props;
-  console.log('🚀 ~ ListFilm ~ data', data);
+  const { data, keyword } = props;
+  console.log("🚀 ~ ListFilm ~ data", data);
 
   return (
-    <div className="container">
-      <div
-        className="row"
-        style={{ color: 'white', height: '80vh', width: '100%' }}
-      >
+    <div
+      className="container pt-3"
+      style={{ color: "white", minHeight: "80vh", width: "100%" }}
+    >
+      {keyword && <h1>Search results for "{keyword}"</h1>}
+      <div className="row">
         {data.length > 0 ? (
           data.map((item: any) => {
             return (
@@ -24,7 +24,7 @@ export default function ListFilm(props: any) {
             );
           })
         ) : (
-          <div className="flex-between-center" style={{ alignItems: 'center' }}>
+          <div className="flex-between-center" style={{ alignItems: "center" }}>
             <h1>👻👻👻</h1>
           </div>
         )}

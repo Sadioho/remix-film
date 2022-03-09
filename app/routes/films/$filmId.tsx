@@ -1,18 +1,17 @@
 import {
   ActionFunction,
-  Form,
   LoaderFunction,
   MetaFunction,
   Outlet,
   redirect,
-  useActionData,
-  useCatch,
   useLoaderData,
-  useParams,
-} from 'remix';
-import { addComment, CommentEntry } from '~/api/comment';
-import { getDetailData } from '~/api/detail';
-import CommentsList from '~/components/common/CommentList';
+} from "remix";
+import { addComment, CommentEntry } from "~/api/comment";
+import { getDetailData } from "~/api/detail";
+import { LikeList } from "~/api/films";
+import CardFilm from "~/components/common/CardFilm";
+import CommentsList from "~/components/common/CommentList";
+import imgDefault from "../../image/imagesDefault.jpg";
 
 export const loader: LoaderFunction = async ({ params }) => {
   const film: any = params.filmId;
@@ -24,18 +23,18 @@ export const action: ActionFunction = async ({ request }) => {
   const timeNow = Date.now();
   const time = new Date(timeNow);
   const comment: CommentEntry = {
-    name: body.get('name') as string,
-    messenger: body.get('messenger') as string,
-    filmId: body.get('id') as string,
+    name: body.get("name") as string,
+    messenger: body.get("messenger") as string,
+    filmId: body.get("id") as string,
     time: ` ${time.getHours()}:${time.getMinutes()}`,
     date: `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`,
   };
-  const errors = { name: '', messenger: '' };
+  const errors = { name: "", messenger: "" };
   if (!comment.name) {
-    errors.name = 'Làm ơn không được để trống tên 😖😖😖!!!';
+    errors.name = "Làm ơn không được để trống tên 😖😖😖!!!";
   }
   if (!comment.messenger) {
-    errors.messenger = 'Làm ơn không được để trống nội dung 😖😖😖!!!';
+    errors.messenger = "Làm ơn không được để trống nội dung 😖😖😖!!!";
   }
 
   if (errors.name || errors.messenger) {
@@ -48,20 +47,23 @@ export const action: ActionFunction = async ({ request }) => {
   return redirect(`/films/${comment.filmId}`);
 };
 
-// export const meta: MetaFunction = ({ data }) => {
-//   return {
-//     title: data.results.name ? data.results.name : 'Remix Film Detail',
-//     description: data.results.introduction,
-//   };
-// };
+export const meta: MetaFunction = ({ data }) => {
+  return {
+    title: data.results ? data.results.name : "Remix Film Detail",
+    description: data.results
+      ? data.results.introduction
+      : "Remix Film Detail Description",
+  };
+};
 export default function Detail() {
   const film = useLoaderData();
+  console.log("Detail ~ film", film);
   return (
     <div className="container-fluid detail">
       <div className="detail_banner">
         <img
           src={film.results.coverHorizontalUrl}
-          alt={film.results.aliasName}
+          alt={film.results.aliasName || "haha"}
         />
       </div>
 
@@ -115,7 +117,7 @@ export default function Detail() {
             </div>
           </div>
           <div className="col-3 contents_category">
-            <div className='widget'>
+            <div className="widget">
               <button className="btn">GET TICKETS</button>
               <div className="contents_category__hour">
                 <p className="text1">Showtimes</p>
@@ -123,6 +125,16 @@ export default function Detail() {
                 <p className="text2">{film.results.name}</p>
                 <span className="text2 time-first">1:00 pm</span>
                 <span className="text2 time-second">4:00 pm</span>
+              </div>
+            </div>
+            <div className="widget">
+              <button className="btn">TAG LIST</button>
+              <div className="contents_category__hour">
+                {film.results.tagList.map((tag: any) => (
+                  <p className="text2" key={tag.id}>
+                    #{tag.name}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -165,6 +177,23 @@ export default function Detail() {
         {/* sử dụng outlet để sử dụng layout đang có  */}
         <Outlet />
         <CommentsList filmId={film.results.id} comments={film.comments} />
+        <div className="container mt-5">
+          <div className="row">
+            <h1 className="col-12">List of other movies</h1>
+            {film.results.likeList.map(
+              (ele: LikeList, indexE: number) =>
+                indexE < 6 && (
+                  <CardFilm
+                    key={ele.id}
+                    src={ele.coverVerticalUrl || imgDefault}
+                    title={ele.name}
+                    id={ele.id}
+                    allFilm={true}
+                  />
+                )
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -175,11 +204,11 @@ export function ErrorBoundary({ error }: any) {
     <div
       className="error"
       style={{
-        padding: '2rem',
-        background: '#e57373',
-        color: 'white',
-        textAlign: 'center',
-        height: '90vh',
+        padding: "2rem",
+        background: "#e57373",
+        color: "white",
+        textAlign: "center",
+        height: "90vh",
       }}
     >
       <h3>Rất lấy làm tiếc là có một số lỗi đã xảy ra 👻👻👻👻 </h3>

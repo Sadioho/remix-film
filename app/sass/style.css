@@ -1566,7 +1566,7 @@ footer {
   background-color: black; }
   footer .footer {
     color: white;
-    padding: 5rem !important; }
+    padding: 5rem 0 !important; }
     footer .footer_cool__description {
       text-align: justify;
       margin-top: 1.5rem;

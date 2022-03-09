@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'remix';
-import { Film } from '~/api/films';
-import RenderImage from './CardFilm';
+import { useEffect, useRef } from "react";
+import { Link } from "remix";
+import { Film } from "~/api/films";
+import RenderImage from "./CardFilm";
 function cutString(data: string) {
-  let start = data.indexOf('id=');
-  let end = data.indexOf('&');
+  let start = data.indexOf("id=");
+  let end = data.indexOf("&");
   let id = data.slice(start + 3, end);
   return id;
 }
@@ -27,39 +27,39 @@ export default function Banner(props: any) {
     const odrag = refDrag.current;
     const circleSpin = refSpin.current;
     const ground = refGround.current;
-    const images: any = circleSpin?.getElementsByClassName('item-carousel');
+    const images: any = circleSpin?.getElementsByClassName("item-carousel");
     const elements = [...images]; // arrays
     const init = (delayTime: any) => {
       elements.map((item, index) => {
         item.style.transform =
-          'rotateY(' +
+          "rotateY(" +
           index * (360 / elements.length) +
-          'deg) translateZ(' +
+          "deg) translateZ(" +
           radius +
-          'px)';
-        item.style.transition = 'transform 1s';
+          "px)";
+        item.style.transition = "transform 1s";
         item.style.transitionDelay =
-          delayTime || (elements.length - index) / 4 + 's';
+          delayTime || (elements.length - index) / 4 + "s";
       });
     };
-    if (odrag) odrag.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    if (odrag) odrag.style.transform = "rotateX(0deg) rotateY(0deg)";
 
     setTimeout(init, 1000);
 
     // Size of images
     if (circleSpin) {
-      circleSpin.style.width = imgWidth + 'px';
-      circleSpin.style.height = imgHeight + 'px';
+      circleSpin.style.width = imgWidth + "px";
+      circleSpin.style.height = imgHeight + "px";
     }
     // Size of ground - depend on radius
     if (ground) {
-      ground.style.width = radius * 3 + 'px';
-      ground.style.height = radius * 3 + 'px';
+      ground.style.width = radius * 3 + "px";
+      ground.style.height = radius * 3 + "px";
     }
 
     // auto spin
     if (autoRotate) {
-      const animationName = rotateSpeed > 0 ? 'spin' : 'spinRevert';
+      const animationName = rotateSpeed > 0 ? "spin" : "spinRevert";
       if (circleSpin)
         circleSpin.style.animation = `${animationName} ${Math.abs(
           rotateSpeed
@@ -77,12 +77,12 @@ export default function Banner(props: any) {
       if (tY < 0) tY = 0;
 
       // Apply the angle
-      obj.style.transform = 'rotateX(' + -tY + 'deg) rotateY(' + tX + 'deg)';
+      obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
     };
 
     const playSpin = (yes: any) => {
       if (circleSpin)
-        circleSpin.style.animationPlayState = yes ? 'running' : 'paused';
+        circleSpin.style.animationPlayState = yes ? "running" : "paused";
     };
     document.onpointerdown = (e) => {
       let sX = e.clientX,
@@ -155,7 +155,7 @@ export default function Banner(props: any) {
               key={item.id}
               className="box_3D_container__item item-carousel"
             >
-              <img src={item.imageUrl} alt={item.title || 'image carousel'} />
+              <img src={item.imageUrl} alt={item.title || "image carousel"} />
               <p className="name-movie py-1">{item.title}</p>
             </Link>
           ))}
